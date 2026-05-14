@@ -57,7 +57,7 @@ h4{color:#555;font-size:.95em;margin:14px 0 6px}
       <p class="subtitle">
         Kỳ: <b>2026-05-01</b> → <b>2026-05-13</b>
         (13/31 ngày — kỳ vọng <b>41.9%</b>)
-        &nbsp;·&nbsp; Cập nhật: 14/05/2026 18:00
+        &nbsp;·&nbsp; Cập nhật: 14/05/2026 18:05
       </p>
     </div>
     <a href="https://drive.google.com/file/d/1UGFxh2aV_e0DHBL91-rN8jGGFed24Xfq/view?usp=sharing" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#0f9d58;color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-size:.9em;white-space:nowrap;height:fit-content">📥 Tải Excel tồn kho</a>
@@ -5462,7 +5462,7 @@ h4{color:#555;font-size:.95em;margin:14px 0 6px}
 <tr><td>TH09211</td><td style="max-width:280px">TH09211</td><td class="num">1</td><td class="num">2027-04-05</td><td class="num">450K</td></tr>
 </tbody></table></div><p class="meta">...và 14 mặt hàng nữa.</p>
   </div>
-</div><div class="panel"><h4>Đề xuất điều chuyển — ưu tiên hàng hết/cận date đang bán được ở shop khác</h4><div class="table-scroll"><table class="dt"><thead><tr><th>Shop nguồn</th><th>Mã SP</th><th>Tên SP</th><th class="num">SL</th><th class="num">Hạn dùng</th><th class="num">Giá trị</th><th>Mức</th><th>Chuyển đến</th></tr></thead><tbody><tr><td><b>SHOP0032</b></td><td>TC05011</td><td style="max-width:220px">Nước Pocari Sweat 900ml</td><td class="num">47</td><td class="num">2026-11-04</td><td class="num">1,128K</td><td>🔴 &lt;6 tháng</td><td>SHOP0044, SHOP005A, SHOP0061, SHOP0062, SHOP0068, SHOP0069, SHOP0088, SHOP0094, SHOP0130, SHOP0139</td></tr>
+</div><div class="panel"><h4>Đề xuất điều chuyển — ưu tiên hàng hết/cận date đang bán được ở shop khác</h4><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap"><select id="tr-sel" onchange="filterTransfer(this.value)" style="padding:8px 12px;border-radius:8px;border:1px solid #ccc;font-size:.95em;min-width:200px"><option value="">— Tất cả shop —</option><option value="SHOP0032">SHOP0032</option><option value="SHOP0044">SHOP0044</option><option value="SHOP004A">SHOP004A</option></select><button onclick="filterTransfer('')" style="padding:8px 14px;border-radius:8px;border:1px solid #ccc;background:#f8f9fa;cursor:pointer;font-size:.9em">Xem tất cả</button><span id="tr-count" style="color:#777;font-size:.85em"></span></div><div class="table-scroll"><table class="dt" id="tr-table"><thead><tr><th>Shop nguồn</th><th>Mã SP</th><th>Tên SP</th><th class="num">SL</th><th class="num">Hạn dùng</th><th class="num">Giá trị</th><th>Mức</th><th>Chuyển đến</th></tr></thead><tbody><tr><td><b>SHOP0032</b></td><td>TC05011</td><td style="max-width:220px">Nước Pocari Sweat 900ml</td><td class="num">47</td><td class="num">2026-11-04</td><td class="num">1,128K</td><td>🔴 &lt;6 tháng</td><td>SHOP0044, SHOP005A, SHOP0061, SHOP0062, SHOP0068, SHOP0069, SHOP0088, SHOP0094, SHOP0130, SHOP0139</td></tr>
 <tr><td><b>SHOP0032</b></td><td>TH08233</td><td style="max-width:220px">Thyrozol Tab 10mg H10x10 (SĐK-23)</td><td class="num">200</td><td class="num">2026-09-17</td><td class="num">620K</td><td>🔴 &lt;6 tháng</td><td>SHOP0044, SHOP0062</td></tr>
 <tr><td><b>SHOP0032</b></td><td>TP02142</td><td style="max-width:220px">Finelus DC Sus H10</td><td class="num">20</td><td class="num">2026-06-06</td><td class="num">480K</td><td>🔴 &lt;6 tháng</td><td>SHOP0044, SHOP004A, SHOP005A, SHOP0061, SHOP0062, SHOP0065, SHOP0068, SHOP0069, SHOP0076, SHOP0088, SHOP0092, SHOP0094, SHOP0104, SHOP0105, SHOP0115, SHOP0118, SHOP0130</td></tr>
 <tr><td><b>SHOP0032</b></td><td>TH02332</td><td style="max-width:220px">Viartril-S Sac 1500mg H30</td><td class="num">30</td><td class="num">2026-06-30</td><td class="num">480K</td><td>🔴 &lt;6 tháng</td><td>SHOP0061, SHOP0105</td></tr>
@@ -5556,6 +5556,20 @@ function filterInv(shopId){
     }
   });
   document.getElementById('inv-sel').value=shopId;
+}
+function filterTransfer(shopId){
+  var rows=document.querySelectorAll('#tr-table tbody tr');
+  var shown=0;
+  rows.forEach(function(r){
+    var cell=r.cells[0];
+    var show=!shopId||(cell&&cell.textContent.trim()===shopId);
+    r.style.display=show?'':'none';
+    if(show)shown++;
+  });
+  var sel=document.getElementById('tr-sel');
+  var cnt=document.getElementById('tr-count');
+  if(sel)sel.value=shopId;
+  if(cnt)cnt.textContent=shopId?shown+' đề xuất cho '+shopId:'Tất cả '+shown+' đề xuất';
 }
 </script>
 </body>
