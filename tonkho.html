@@ -44,18 +44,41 @@ h4{color:#555;font-size:.93em;margin:14px 0 6px;font-weight:600}
 .modal-section.war h4{color:#f39c12}
 .modal-section.ns  h4{color:#8e44ad}
 @media print{body{background:#fff}}
+/* ── Navigation ── */
+.nav{background:#1a3c5e;padding:10px 20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+.nav-brand{color:#fff;font-weight:700;font-size:15px;white-space:nowrap;margin-right:4px}
+.nav a{color:#a8c8e8;text-decoration:none;padding:6px 10px;border-radius:6px;font-size:.9em;white-space:nowrap}
+.nav a.active{background:#2a5c8e;color:#fff}
+/* ── Mobile ── */
+@media(max-width:768px){
+  .wrap{padding:12px}
+  h1{font-size:1.25em}
+  .cv{font-size:1.5em}
+  .nav{padding:8px 12px}
+  .nav a{padding:5px 8px;font-size:.82em}
+  .nav-brand{font-size:13px}
+}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:768px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .modal-box{border-radius:8px 8px 0 0;margin-top:auto}
+  .modal-overlay{padding:0;align-items:flex-end}
+  .modal-body{max-height:78vh;padding:12px 14px 18px}
+}
+@media(max-width:480px){
+  .g3{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<div style="background:#1a3c5e;padding:10px 20px;display:flex;gap:12px;align-items:center;position:sticky;top:0;z-index:100;">
-  <span style="color:#fff;font-weight:700;font-size:15px;margin-right:6px;">UPHARMAHP</span>
-  <a href="index.html"  style="color:#a8c8e8;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:.9em;">📊 Tổng quan tháng</a>
-  <a href="staff.html"  style="color:#a8c8e8;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:.9em;">👨‍💼 Nhân sự</a>
-  <a href="km.html"     style="color:#a8c8e8;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:.9em;">🎯 Khuyến mại</a>
-  <a href="#"           style="color:#fff;background:#2a5c8e;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:.9em;font-weight:600;">📦 Tồn kho</a>
-</div>
-
+<nav class="nav">
+  <span class="nav-brand">UPHARMAHP</span>
+  <a href="index.html">📊 Tổng quan tháng</a>
+  <a href="staff.html">👨‍💼 Nhân sự</a>
+  <a href="km.html">🎯 Khuyến mại</a>
+  <a href="tonkho.html" class="active">📦 Tồn kho</a>
+</nav>
 
 <!-- Modal chi tiết shop -->
 <div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
@@ -76,7 +99,7 @@ h4{color:#555;font-size:.93em;margin:14px 0 6px;font-weight:600}
   <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:4px">
     <div>
       <h1>📦 Tồn kho cận date &amp; hàng chậm bán</h1>
-      <p class="subtitle">Cập nhật: 15/05/2026 15:40 &nbsp;·&nbsp; 19 nhà thuốc &nbsp;·&nbsp; Tháng 5/2026</p>
+      <p class="subtitle">Cập nhật: 15/05/2026 16:18 &nbsp;·&nbsp; 19 nhà thuốc &nbsp;·&nbsp; Tháng 5/2026</p>
     </div>
     <a href="tonkho_052026_dev.xlsx" download style="display:inline-flex;align-items:center;gap:6px;background:#1d6f42;color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;font-size:.9em;font-weight:600;white-space:nowrap;height:fit-content">📥 Tải Excel tổng hợp</a>
   </div>
@@ -84,7 +107,7 @@ h4{color:#555;font-size:.93em;margin:14px 0 6px;font-weight:600}
   
 <div style="margin-bottom:22px">
   <div style="font-size:.72em;font-weight:600;color:#8a9bb0;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Tổng quan tồn kho</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px">
+  <div class="g3" style="margin-bottom:14px">
     <div class="card b">
       <div class="cv">3,628</div>
       <div class="cl">Tổng số mã hàng</div>
@@ -102,7 +125,7 @@ h4{color:#555;font-size:.93em;margin:14px 0 6px;font-weight:600}
     </div>
   </div>
   <div style="font-size:.72em;font-weight:600;color:#8a9bb0;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Hàng cần xử lý</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+  <div class="g3">
     <div class="card r">
       <div class="cv">💀 7 SKU</div>
       <div class="cl">Đã hết hạn</div>
@@ -179,7 +202,7 @@ h4{color:#555;font-size:.93em;margin:14px 0 6px;font-weight:600}
 </div>
 
   <p style="font-size:11px;color:#aaa;text-align:center;margin-top:24px">
-    UPHARMAHP — 15/05/2026 15:40
+    UPHARMAHP — 15/05/2026 16:18
   </p>
 </div>
 
