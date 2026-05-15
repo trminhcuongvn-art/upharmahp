@@ -21,21 +21,35 @@
   tr:hover td { background:#f7f9fc; }
   .insight-box { background:#fff; border-left:4px solid #3a7bd5; padding:16px 20px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,.08); margin-bottom:20px; }
   .insight-box h3 { font-size:14px; color:#1a3c5e; margin-bottom:10px; }
+/* ── Navigation ── */
+.nav{background:#1a3c5e;padding:10px 20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+.nav-brand{color:#fff;font-weight:700;font-size:15px;white-space:nowrap;margin-right:4px}
+.nav a{color:#a8c8e8;text-decoration:none;padding:6px 10px;border-radius:6px;font-size:.9em;white-space:nowrap}
+.nav a.active{background:#2a5c8e;color:#fff}
+/* ── Mobile ── */
+@media(max-width:768px){
+  .wrap{padding:12px}
+  h1{font-size:1.25em}
+  .cv{font-size:1.5em}
+  .nav{padding:8px 12px}
+  .nav a{padding:5px 8px;font-size:.82em}
+  .nav-brand{font-size:13px}
+}
 </style>
 </head>
 <body>
 
-<div style="background:#1a3c5e;padding:10px 20px;display:flex;gap:12px;align-items:center;position:sticky;top:0;z-index:100;">
-  <span style="color:#fff;font-weight:700;font-size:15px;margin-right:6px;">UPHARMAHP</span>
-  <a href="index.html"  style="color:#a8c8e8;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:.9em;">📊 Tổng quan tháng</a>
-  <a href="staff.html"  style="color:#a8c8e8;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:.9em;">👨‍💼 Nhân sự</a>
-  <a href="#"           style="color:#fff;background:#2a5c8e;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:.9em;font-weight:600;">🎯 Khuyến mại</a>
-  <a href="tonkho.html" style="color:#a8c8e8;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:.9em;">📦 Tồn kho</a>
-</div>
+<nav class="nav">
+  <span class="nav-brand">UPHARMAHP</span>
+  <a href="index.html">📊 Tổng quan tháng</a>
+  <a href="staff.html">👨‍💼 Nhân sự</a>
+  <a href="km.html" class="active">🎯 Khuyến mại</a>
+  <a href="tonkho.html">📦 Tồn kho</a>
+</nav>
 
 <div class="container">
   <h1>🎯 Phân tích Hiệu quả Khuyến mại</h1>
-  <div class="sub">Cập nhật: 15/05/2026 15:42 | Tháng hiện tại: T5/2026 (14/31 ngày) | 19 nhà thuốc</div>
+  <div class="sub">Cập nhật: 15/05/2026 16:18 | Tháng hiện tại: T5/2026 (14/31 ngày) | 19 nhà thuốc</div>
 
   
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:20px;">
@@ -679,7 +693,7 @@
   </table>
 
   <p style="font-size:11px;color:#aaa;text-align:center;margin-top:24px;">
-    Báo cáo tự động — UPHARMAHP | 15/05/2026 15:42
+    Báo cáo tự động — UPHARMAHP | 15/05/2026 16:18
   </p>
 </div>
 
