@@ -32,12 +32,20 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:#222;font-
 h4{font-size:.9em;color:#555;margin-bottom:6px}
 .no-data{color:#999;font-style:italic;font-size:.88em}
 .alerts-box{margin-bottom:14px}
+.kpi8-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px}
+@media(min-width:500px){.kpi8-grid{grid-template-columns:repeat(4,1fr)}}
+.kpi8-card{background:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 2px 6px rgba(0,0,0,.07)}
+.kpi8-title{font-size:.72em;color:#888;margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.kpi8-main{font-size:1.28em;font-weight:700;margin-bottom:4px}
+.kpi8-sub{font-size:.82em;color:#555;margin-bottom:2px}
+.kpi8-cmps{margin-top:6px;font-size:.78em;display:flex;flex-direction:column;gap:2px;color:#777}
+.cmp{display:inline-block}
 </style>
 </head>
 <body>
 <div class="header">
   <h1>🏪 SHOP0094</h1>
-  <div class="sub">Dữ liệu đến: 17/05/2026 (17/31 ngày) &nbsp;·&nbsp; Cập nhật lúc 18:47 ngày 18/05/2026</div>
+  <div class="sub">Dữ liệu đến: 17/05/2026 (17/31 ngày) &nbsp;·&nbsp; Cập nhật lúc 19:15 ngày 18/05/2026</div>
 </div>
 
 <div class="wrap">
@@ -49,29 +57,12 @@ h4{font-size:.9em;color:#555;margin-bottom:6px}
   </div>
 
   
-<div class="kpi-grid">
-  <div class="kpi-card">
-    <div class="kpi-label">DS hôm nay</div>
-    <div class="kpi-val">5.6M</div>
-    <div style="font-size:.78em;color:#6f42c1;margin-top:2px">HS1: 722K</div>
-    <div style="font-size:.78em;color:#e74c3c;margin-top:3px">-2% so hôm qua</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">DS tháng này</div>
-    <div class="kpi-val">105.1M</div>
-    <div style="font-size:.78em;color:#777;margin-top:3px">KH: 190.0M</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">Hoàn thành KH</div>
-    <div class="kpi-val" style="color:#e74c3c">55.3%</div>
-    <div style="font-size:.78em;color:#777;margin-top:3px">Pace: 101%</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">HS1 tháng này</div>
-    <div class="kpi-val" style="color:#6f42c1">26.2M</div>
-    <div style="font-size:.78em;color:#777;margin-top:3px">24.9% DS · KH: 48K</div>
-  </div>
-</div>
+<div style="font-size:.72em;font-weight:700;color:#888;text-transform:uppercase;
+            letter-spacing:.5px;margin:4px 0 7px">📅 Hôm nay — 17/05/2026</div>
+<div class="kpi8-grid"><div class="kpi8-card" style="border-top:3px solid #3498db"><div class="kpi8-title">📊 DS / HS1 Hôm nay</div><div class="kpi8-main" style="color:#1a3c5e">5.6M</div><div class="kpi8-sub">HS1: <b style="color:#6f42c1">722K</b></div><div class="kpi8-cmps"><div><span class="cmp" style="color:#e74c3c">-2% so hôm qua (16/05)</span></div><div><span class="cmp" style="color:#e74c3c">-8% so tuần trước (10/05)</span></div></div></div><div class="kpi8-card" style="border-top:3px solid #3498db"><div class="kpi8-title">🧾 GT Trung bình Bill</div><div class="kpi8-main" style="color:#1a3c5e">200K</div><div class="kpi8-sub">28 bill trong ngày</div><div class="kpi8-cmps"><div><span class="cmp" style="color:#27ae60">+33% so hôm qua (16/05)</span></div><div><span class="cmp" style="color:#27ae60">+62% so tuần trước (10/05)</span></div></div></div><div class="kpi8-card" style="border-top:3px solid #3498db"><div class="kpi8-title">🗒️ Số Bill Hôm nay</div><div class="kpi8-main" style="color:#1a3c5e">28</div><div class="kpi8-sub">GT tổng: 5.6M</div><div class="kpi8-cmps"><div><span class="cmp" style="color:#e74c3c">-10 bill so hôm qua (16/05)</span></div><div><span class="cmp" style="color:#e74c3c">-21 bill so tuần trước (10/05)</span></div></div></div><div class="kpi8-card" style="border-top:3px solid #3498db"><div class="kpi8-title">👤 Lượt khách Hôm nay</div><div class="kpi8-main" style="color:#1a3c5e">28</div><div class="kpi8-sub">Avg bill: 200K</div><div class="kpi8-cmps"><div><span class="cmp" style="color:#e74c3c">-8 KH so hôm qua (16/05)</span></div><div><span class="cmp" style="color:#e74c3c">-16 KH so tuần trước (10/05)</span></div></div></div></div>
+<div style="font-size:.72em;font-weight:700;color:#888;text-transform:uppercase;
+            letter-spacing:.5px;margin:12px 0 7px">📊 Tháng 5/2026</div>
+<div class="kpi8-grid"><div class="kpi8-card" style="border-top:3px solid #27ae60"><div class="kpi8-title">📅 DS Tháng này</div><div class="kpi8-main" style="color:#1a3c5e">105.1M</div><div class="kpi8-sub">TB/ngày: 6.2M</div><div class="kpi8-cmps"><div><span class="cmp" style="color:#27ae60">+2% vs cùng kỳ T.trước</span></div><div><span class="cmp">— vs cùng kỳ năm trước</span></div></div></div><div class="kpi8-card" style="border-top:3px solid #e74c3c"><div class="kpi8-title">🎯 KH Doanh số</div><div class="kpi8-main" style="color:#e74c3c">55.3%</div><div class="kpi8-sub">105.1M / 190.0M</div><div class="kpi8-sub">TB: 6.2M/ngày · Pace 101%</div><div class="kpi8-cmps"><div><span class="cmp" style="color:#27ae60">+2% vs cùng kỳ T.trước</span></div><div><span class="cmp">— vs cùng kỳ năm trước</span></div></div></div><div class="kpi8-card" style="border-top:3px solid #27ae60"><div class="kpi8-title">⭐ KH Hàng Hệ số</div><div class="kpi8-main" style="color:#27ae60">54580.8%</div><div class="kpi8-sub">26.2M / 48K</div><div class="kpi8-sub">TB: 1.5M/ngày · 24.9% DS</div><div class="kpi8-cmps"><div><span class="cmp" style="color:#27ae60">+30% vs cùng kỳ T.trước</span></div><div><span class="cmp">— vs cùng kỳ năm trước</span></div></div></div><div class="kpi8-card" style="border-top:3px solid #e67e22"><div class="kpi8-title">⏳ Cần/Ngày Để Đạt KH</div><div class="kpi8-main" style="color:#e67e22">6.1M/ngày</div><div class="kpi8-sub">HS1: <b>Đã vượt KH ✓</b></div><div class="kpi8-sub">Còn <b>14</b> ngày trong tháng</div><div class="kpi8-cmps"></div></div></div>
   
 <div style="margin:12px 0 20px">
   <div style="display:flex;justify-content:space-between;font-size:.82em;color:#777;margin-bottom:4px">
