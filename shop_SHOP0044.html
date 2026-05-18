@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Dashboard SHOP0044 — T5/2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:#222;font-size:15px}
+.header{background:linear-gradient(135deg,#1a3c5e,#2980b9);color:#fff;padding:16px 18px;position:sticky;top:0;z-index:99;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.header h1{font-size:1.2em;margin-bottom:2px}
+.header .sub{font-size:.8em;opacity:.8}
+.wrap{max-width:720px;margin:0 auto;padding:14px}
+.kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+@media(min-width:500px){.kpi-grid{grid-template-columns:repeat(4,1fr)}}
+.kpi-card{background:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 2px 6px rgba(0,0,0,.07);text-align:center}
+.kpi-label{font-size:.75em;color:#999;margin-bottom:4px}
+.kpi-val{font-size:1.35em;font-weight:700;color:#1a3c5e}
+.section{background:#fff;border-radius:10px;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,.07);overflow:hidden}
+.section-hdr{padding:14px 16px;font-weight:700;font-size:.95em;color:#1a3c5e;
+              cursor:pointer;display:flex;align-items:center;gap:6px;
+              border-bottom:1px solid #f0f0f0;user-select:none}
+.section-hdr:hover{background:#f8f9fa}
+.toggle-icon{margin-left:auto;font-size:.8em;color:#aaa}
+.section-body{padding:14px 16px}
+.dt{width:100%;border-collapse:collapse;font-size:.86em}
+.dt th{background:#1a3c5e;color:#fff;padding:7px 10px;text-align:left;white-space:nowrap}
+.dt td{padding:7px 10px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+.dt tr:hover td{background:#f8f9fa}
+.num{text-align:right;white-space:nowrap}.ctr{text-align:center}
+.table-scroll{overflow-x:auto}
+h4{font-size:.9em;color:#555;margin-bottom:6px}
+.no-data{color:#999;font-style:italic;font-size:.88em}
+.alerts-box{margin-bottom:14px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏪 SHOP0044</h1>
+  <div class="sub">Dữ liệu đến: 17/05/2026 (17/31 ngày) &nbsp;·&nbsp; Cập nhật lúc 18:30 ngày 18/05/2026</div>
+</div>
+
+<div class="wrap">
+
+  <div class="alerts-box">
+    <div style="font-size:.82em;font-weight:700;color:#555;text-transform:uppercase;
+                letter-spacing:.5px;margin-bottom:8px">⚡ Việc cần làm</div>
+    <div style="display:flex;align-items:flex-start;gap:10px;background:#fdf0ef;border-left:4px solid #e74c3c;border-radius:6px;padding:10px 14px;margin-bottom:8px"><span style="font-size:1.1em;flex-shrink:0">🔴</span><span style="color:#333;font-size:.92em">1 mã hàng đã hết hạn — cần xử lý ngay hôm nay</span></div><div style="display:flex;align-items:flex-start;gap:10px;background:#fef6ee;border-left:4px solid #e67e22;border-radius:6px;padding:10px 14px;margin-bottom:8px"><span style="font-size:1.1em;flex-shrink:0">🟡</span><span style="color:#333;font-size:.92em">46 mã hàng cận date <6 tháng — lên kế hoạch điều chuyển</span></div><div style="display:flex;align-items:flex-start;gap:10px;background:#fef6ee;border-left:4px solid #e67e22;border-radius:6px;padding:10px 14px;margin-bottom:8px"><span style="font-size:1.1em;flex-shrink:0">🟡</span><span style="color:#333;font-size:.92em">Đỗ Thị Thiên Nga đang đạt 54% KH cá nhân — cần hỗ trợ</span></div><div style="display:flex;align-items:flex-start;gap:10px;background:#fef6ee;border-left:4px solid #e67e22;border-radius:6px;padding:10px 14px;margin-bottom:8px"><span style="font-size:1.1em;flex-shrink:0">🟡</span><span style="color:#333;font-size:.92em">Phạm Thị Hồng đang đạt 1% KH cá nhân — cần hỗ trợ</span></div><div style="display:flex;align-items:flex-start;gap:10px;background:#fef6ee;border-left:4px solid #e67e22;border-radius:6px;padding:10px 14px;margin-bottom:8px"><span style="font-size:1.1em;flex-shrink:0">🟡</span><span style="color:#333;font-size:.92em">Tỉ lệ Tồn kho/DS = 305% — tồn kho đang cao bất thường</span></div>
+  </div>
+
+  
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-label">DS hôm nay</div>
+    <div class="kpi-val">19.2M</div>
+    <div style="font-size:.8em;color:#27ae60;margin-top:3px">+15% so hôm qua</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">DS tháng này</div>
+    <div class="kpi-val">381.8M</div>
+    <div style="font-size:.8em;color:#777;margin-top:3px">HS1: 166.9M</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Hoàn thành KH</div>
+    <div class="kpi-val" style="color:#e74c3c">59.7%</div>
+    <div style="font-size:.8em;color:#777;margin-top:3px">KH: 640.0M</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Pace dự báo</div>
+    <div class="kpi-val" style="color:#27ae60">109%</div>
+    <div style="font-size:.8em;color:#777;margin-top:3px">≈ 696.3M cuối tháng</div>
+  </div>
+</div>
+  
+<div style="margin:12px 0 20px">
+  <div style="display:flex;justify-content:space-between;font-size:.82em;color:#777;margin-bottom:4px">
+    <span>381.8M / 640.0M</span>
+    <span>59.7%</span>
+  </div>
+  <div style="background:#e9ecef;border-radius:20px;height:14px;overflow:hidden">
+    <div style="width:59.7%;height:100%;background:#e74c3c;border-radius:20px;
+                transition:width .3s"></div>
+  </div>
+  <div style="font-size:.82em;color:#555;margin-top:6px">Còn 14 ngày — cần trung bình <b>18.4M/ngày</b> để đạt KH</div>
+</div>
+  
+<div class="section">
+  <div class="section-hdr" onclick="toggle('staff-body')">
+    👥 Hiệu suất nhân viên <span class="toggle-icon">▼</span>
+  </div>
+  <div id="staff-body" class="section-body">
+    <div class="table-scroll">
+      <table class="dt">
+        <thead><tr>
+          <th>Nhân viên</th>
+          <th class="num">DS tháng</th>
+          <th class="num">KH cá nhân</th>
+          <th class="num">% KH</th>
+          <th class="num">HS1%</th>
+          <th class="ctr">Cấp bậc</th>
+        </tr></thead>
+        <tbody><tr><td><b>Lưu Thanh Phiên</b><br><span style="font-size:.75em;color:#999">UP000681</span></td><td class="num">144.5M</td><td class="num">175.0M</td><td class="num"><b style="color:#f39c12">83%</b></td><td class="num">41%</td><td class="ctr"><span style="background:#6f42c1;color:#fff;border-radius:10px;padding:2px 8px;font-size:.78em">LV4</span></td></tr><tr><td><b>Nguyễn Thị Minh</b><br><span style="font-size:.75em;color:#999">UP000810</span></td><td class="num">126.0M</td><td class="num">175.0M</td><td class="num"><b style="color:#e74c3c">72%</b></td><td class="num">43%</td><td class="ctr"><span style="background:#6f42c1;color:#fff;border-radius:10px;padding:2px 8px;font-size:.78em">LV4</span></td></tr><tr><td><b>Đỗ Thị Thiên Nga</b><br><span style="font-size:.75em;color:#999">UP000523</span></td><td class="num">110.5M</td><td class="num">205.0M</td><td class="num"><b style="color:#e74c3c">54%</b></td><td class="num">49%</td><td class="ctr"><span style="background:#6f42c1;color:#fff;border-radius:10px;padding:2px 8px;font-size:.78em">LV4</span></td></tr><tr><td><b>Phạm Thị Hồng</b><br><span style="font-size:.75em;color:#999">UP001078</span></td><td class="num">735K</td><td class="num">85.0M</td><td class="num"><b style="color:#e74c3c">1%</b></td><td class="num">34%</td><td class="ctr"><span style="background:#e74c3c;color:#fff;border-radius:10px;padding:2px 8px;font-size:.78em">Chưa đạt</span></td></tr><tr><td><b>UP000331</b><br><span style="font-size:.75em;color:#999">UP000331</span></td><td class="num">102K</td><td class="num">—</td><td class="num"><b style="color:#999">—</b></td><td class="num">34%</td><td class="ctr"><span style="background:#e74c3c;color:#fff;border-radius:10px;padding:2px 8px;font-size:.78em">Chưa đạt</span></td></tr></tbody>
+      </table>
+    </div>
+    <p style="font-size:.75em;color:#aaa;margin-top:6px">
+      Cấp bậc dự kiến nếu giữ pace hiện tại đến cuối tháng.
+    </p>
+  </div>
+</div>
+  
+<div class="section">
+  <div class="section-hdr" onclick="toggle('inv-body')">
+    📦 Tồn kho cần chú ý
+    <span style="font-size:.85em;font-weight:400;margin-left:8px;color:#aaa">
+      1 hết hạn · 46 cận date
+    </span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div id="inv-body" class="section-body">
+    <div style="margin-bottom:14px"><h4 style="color:#e74c3c">💀 Đã hết hạn (1 mặt hàng)</h4><div class="table-scroll"><table class="dt"><thead><tr><th>Mã SP</th><th>Tên SP</th><th class="num">SL</th><th class="num">Hạn dùng</th><th class="num">Giá trị</th></tr></thead><tbody><tr><td style="font-size:.8em;color:#888">TH03139</td><td style="max-width:200px">Klenzit-C Gel 15g</td><td class="num">1</td><td class="num">2026-05-11</td><td class="num">114K</td></tr></tbody></table></div></div><div style="margin-bottom:14px"><h4 style="color:#e67e22">🔴 Cận date &lt;6 tháng (46 mặt hàng)</h4><div class="table-scroll"><table class="dt"><thead><tr><th>Mã SP</th><th>Tên SP</th><th class="num">SL</th><th class="num">Hạn dùng</th><th class="num">Giá trị</th></tr></thead><tbody><tr><td style="font-size:.8em;color:#888">TH00858</td><td style="max-width:200px">Droxikid Sac 250mg H24</td><td class="num">13</td><td class="num">2026-05-27</td><td class="num">44K</td></tr><tr><td style="font-size:.8em;color:#888">TH08916</td><td style="max-width:200px">Ceclor Sus 125mg/5ml 30ml (SĐK-23)</td><td class="num">1</td><td class="num">2026-05-31</td><td class="num">58K</td></tr><tr><td style="font-size:.8em;color:#888">TB05668</td><td style="max-width:200px">Glicer baby Sup H2x5</td><td class="num">3</td><td class="num">2026-06-08</td><td class="num">37K</td></tr><tr><td style="font-size:.8em;color:#888">TH01555</td><td style="max-width:200px">Gaviscon Sus 10ml H24</td><td class="num">13</td><td class="num">2026-06-22</td><td class="num">104K</td></tr><tr><td style="font-size:.8em;color:#888">TB08626</td><td style="max-width:200px">Kem Đánh Răng Trẻ Em Laforin Kids Hương Đào 5g</td><td class="num">1</td><td class="num">2026-06-22</td><td class="num">10K</td></tr><tr><td style="font-size:.8em;color:#888">TB08059</td><td style="max-width:200px">VNP Softy Plus Cream 10g</td><td class="num">1</td><td class="num">2026-07-03</td><td class="num">25K</td></tr><tr><td style="font-size:.8em;color:#888">TP05658</td><td style="max-width:200px">Kim Tiền Thảo AGP400 Agimexpharm L60</td><td class="num">60</td><td class="num">2026-07-05</td><td class="num">168K</td></tr><tr><td style="font-size:.8em;color:#888">MP04098</td><td style="max-width:200px">Kem Vệ Sinh Phụ Nữ Beucare Antibacterial & Moisturizing 100ml</td><td class="num">2</td><td class="num">2026-07-12</td><td class="num">198K</td></tr><tr><td style="font-size:.8em;color:#888">TH02020</td><td style="max-width:200px">Doxycyclin Cap 100 mg DMC H10x10</td><td class="num">8</td><td class="num">2026-07-14</td><td class="num">8K</td></tr><tr><td style="font-size:.8em;color:#888">TH03775</td><td style="max-width:200px">Nifin 100 Tabs H2x10</td><td class="num">1</td><td class="num">2026-08-02</td><td class="num">6K</td></tr><tr><td style="font-size:.8em;color:#888">TH01968</td><td style="max-width:200px">Nexium Mups Tab 20mg H2x7</td><td class="num">13</td><td class="num">2026-08-12</td><td class="num">292K</td></tr><tr><td style="font-size:.8em;color:#888">TP08765</td><td style="max-width:200px">Imunoglukan P4H 100mg Cap H3x10</td><td class="num">30</td><td class="num">2026-08-31</td><td class="num">360K</td></tr><tr><td style="font-size:.8em;color:#888">TB03474</td><td style="max-width:200px">Máy đo nồng độ oxy IMEDICARE iOM-A6</td><td class="num">1</td><td class="num">2026-08-31</td><td class="num">650K</td></tr><tr><td style="font-size:.8em;color:#888">TH08677</td><td style="max-width:200px">Air-X 120mg Tab H10x10</td><td class="num">160</td><td class="num">2026-09-04</td><td class="num">210K</td></tr><tr><td style="font-size:.8em;color:#888">TH10365</td><td style="max-width:200px">Tra-Desloratadin  Syr  0,05%  60ml</td><td class="num">1</td><td class="num">2026-09-12</td><td class="num">30K</td></tr><tr><td style="font-size:.8em;color:#888">TH01360</td><td style="max-width:200px">V.Rohto for Kids Eye drops 13ml</td><td class="num">2</td><td class="num">2026-09-15</td><td class="num">110K</td></tr><tr><td style="font-size:.8em;color:#888">TH02014</td><td style="max-width:200px">Efferalgan Sac 250mg H12</td><td class="num">48</td><td class="num">2026-09-26</td><td class="num">178K</td></tr><tr><td style="font-size:.8em;color:#888">TH00938</td><td style="max-width:200px">Catolis Cap 150mg H4x15</td><td class="num">30</td><td class="num">2026-10-01</td><td class="num">135K</td></tr><tr><td style="font-size:.8em;color:#888">TH01515</td><td style="max-width:200px">Zitromax Sus 200mg/5ml 15ml</td><td class="num">4</td><td class="num">2026-10-02</td><td class="num">532K</td></tr><tr><td style="font-size:.8em;color:#888">TH02162</td><td style="max-width:200px">Bactamox 625 Sac H12</td><td class="num">12</td><td class="num">2026-10-03</td><td class="num">151K</td></tr><tr><td colspan="5" style="color:#999;font-size:.82em;padding:6px">...và 26 mặt hàng nữa</td></tr></tbody></table></div></div><div style="margin-bottom:14px"><h4 style="color:#f39c12">🟡 Cận date 6–12 tháng (183 mặt hàng)</h4><div class="table-scroll"><table class="dt"><thead><tr><th>Mã SP</th><th>Tên SP</th><th class="num">SL</th><th class="num">Hạn dùng</th><th class="num">Giá trị</th></tr></thead><tbody><tr><td style="font-size:.8em;color:#888">TH01970</td><td style="max-width:200px">Symbicort Turbuhaler 160/4.5mcg 60ds</td><td class="num">1</td><td class="num">2026-11-21</td><td class="num">240K</td></tr><tr><td style="font-size:.8em;color:#888">TP01268</td><td style="max-width:200px">Viên ngậm An Phế Nam Dược H20x5</td><td class="num">40</td><td class="num">2026-11-21</td><td class="num">80K</td></tr><tr><td style="font-size:.8em;color:#888">TH03204</td><td style="max-width:200px">Solu-Medrol 40mg Inj 1ml</td><td class="num">3</td><td class="num">2026-11-24</td><td class="num">180K</td></tr><tr><td style="font-size:.8em;color:#888">TH04218</td><td style="max-width:200px">Jazxylo Nasal drops 10ml</td><td class="num">1</td><td class="num">2026-11-24</td><td class="num">10K</td></tr><tr><td style="font-size:.8em;color:#888">TH00385</td><td style="max-width:200px">Crestor Tab 5mg H2x14</td><td class="num">28</td><td class="num">2026-11-25</td><td class="num">232K</td></tr><tr><td style="font-size:.8em;color:#888">TH00385</td><td style="max-width:200px">Crestor Tab 5mg H2x14</td><td class="num">84</td><td class="num">2026-11-26</td><td class="num">697K</td></tr><tr><td style="font-size:.8em;color:#888">TH02230</td><td style="max-width:200px">Tiffy Syrup 60ml</td><td class="num">1</td><td class="num">2026-11-27</td><td class="num">23K</td></tr><tr><td style="font-size:.8em;color:#888">TB08627</td><td style="max-width:200px">Kem đánh răng Laforin Red Toothpaste 5g</td><td class="num">1</td><td class="num">2026-11-29</td><td class="num">10K</td></tr><tr><td style="font-size:.8em;color:#888">TH03005</td><td style="max-width:200px">Depakine Tab 200mg L40</td><td class="num">40</td><td class="num">2026-11-30</td><td class="num">108K</td></tr><tr><td style="font-size:.8em;color:#888">TP04722</td><td style="max-width:200px">Dizzo Orange Etab H12x4</td><td class="num">32</td><td class="num">2026-11-30</td><td class="num">115K</td></tr><tr><td colspan="5" style="color:#999;font-size:.82em;padding:6px">...và 173 mặt hàng nữa</td></tr></tbody></table></div></div>
+  </div>
+</div>
+  
+<div class="section">
+  <div class="section-hdr" onclick="toggle('top-body')">
+    🏆 Top 10 sản phẩm tháng này <span class="toggle-icon">▼</span>
+  </div>
+  <div id="top-body" class="section-body">
+    <div class="table-scroll">
+      <table class="dt">
+        <thead><tr><th class="ctr">#</th><th>Mã SP</th><th>Tên SP</th><th class="num">Doanh số</th></tr></thead>
+        <tbody><tr><td class="ctr" style="color:#999">1</td><td style="font-size:.82em;color:#888">TH02944</td><td>Ketosteril Tab H5x20</td><td class="num"><b>34.6M</b></td></tr><tr><td class="ctr" style="color:#999">2</td><td style="font-size:.82em;color:#888">TH07615</td><td>Cerebrolysin Inj 10ml H5</td><td class="num"><b>28.6M</b></td></tr><tr><td class="ctr" style="color:#999">3</td><td style="font-size:.82em;color:#888">TH01971</td><td>Nexium Mups Tab 40mg H2x7</td><td class="num"><b>11.1M</b></td></tr><tr><td class="ctr" style="color:#999">4</td><td style="font-size:.82em;color:#888">TP10169</td><td>Diasyl Softcap L60 (DTP)</td><td class="num"><b>10.2M</b></td></tr><tr><td class="ctr" style="color:#999">5</td><td style="font-size:.82em;color:#888">TH01527</td><td>Augmentin 1g Tab 875/125mg H2x7</td><td class="num"><b>8.1M</b></td></tr><tr><td class="ctr" style="color:#999">6</td><td style="font-size:.82em;color:#888">TH02250</td><td>Exforge Tab 5mg/80 mg H2x14</td><td class="num"><b>5.9M</b></td></tr><tr><td class="ctr" style="color:#999">7</td><td style="font-size:.82em;color:#888">TP09999</td><td>Premical softcap L60 (DTP)</td><td class="num"><b>5.8M</b></td></tr><tr><td class="ctr" style="color:#999">8</td><td style="font-size:.82em;color:#888">TP00070</td><td>Zentokid Sol 10ml H2x5</td><td class="num"><b>5.7M</b></td></tr><tr><td class="ctr" style="color:#999">9</td><td style="font-size:.82em;color:#888">TH08259</td><td>Fogyma Sol 50mg 10ml H4x5 (SĐK-24)</td><td class="num"><b>5.5M</b></td></tr><tr><td class="ctr" style="color:#999">10</td><td style="font-size:.82em;color:#888">TP05814</td><td>Zentokid Ivy Sol 5ml H4x5</td><td class="num"><b>5.3M</b></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <p style="text-align:center;font-size:.72em;color:#bbb;margin-top:16px">
+    UPHARMAHP · SHOP0044 · T5/2026
+  </p>
+</div>
+
+<script>
+function toggle(id){
+  var el=document.getElementById(id);
+  var ico=el.previousElementSibling.querySelector('.toggle-icon');
+  if(el.style.display==='none'){el.style.display='';if(ico)ico.textContent='▼';}
+  else{el.style.display='none';if(ico)ico.textContent='▶';}
+}
+</script>
+</body>
+</html>
