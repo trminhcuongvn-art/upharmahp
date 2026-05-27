@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo R&D - Băng dính & Màng co | Tập đoàn Minh Cường</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Dark Theme Colors */
+            --bg-primary: #090d16;
+            --bg-secondary: #111827;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.15);
+            --accent: #0ea5e9;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --sidebar-width: 280px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --glass-blur: blur(12px);
+        }
+
+        [data-theme="light"] {
+            /* Light Theme Colors */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --primary: #4f46e5;
+            --primary-light: #4338ca;
+            --primary-glow: rgba(79, 70, 229, 0.1);
+            --accent: #0284c7;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        /* Sidebar Styles */
+        aside {
+            width: var(--sidebar-width);
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.03);
+            border-color: var(--border-color);
+        }
+
+        .nav-item.active {
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            box-shadow: 0 4px 15px var(--primary-glow);
+            border-color: transparent;
+        }
+
+        .nav-item svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .theme-toggle-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-secondary);
+        }
+
+        /* Main Workspace Styles */
+        main {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            min-height: 100vh;
+            padding: 2.5rem 3.5rem;
+            max-width: 1400px;
+            transition: var(--transition);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .header-title-section h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .header-title-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .search-container {
+            position: relative;
+            width: 320px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glassmorphic Cards & Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 15px 30px -10px rgba(99, 102, 241, 0.15);
+        }
+
+        .card-icon-container {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--primary-glow);
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Callout alert boxes */
+        .callout {
+            border-left: 4px solid var(--primary);
+            background-color: var(--primary-glow);
+            padding: 1rem 1.25rem;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .callout.warning {
+            border-left-color: var(--warning);
+            background-color: rgba(245, 158, 11, 0.08);
+        }
+
+        .callout.success {
+            border-left-color: var(--success);
+            background-color: rgba(16, 185, 129, 0.08);
+        }
+
+        /* Table styles */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            background-color: var(--bg-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.92rem;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.02);
+            color: var(--text-primary);
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        /* Competitor Card filter grid */
+        .competitor-filter-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-secondary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            color: white;
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .competitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .competitor-card {
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: var(--transition);
+        }
+
+        .competitor-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-light);
+        }
+
+        .comp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .comp-name-group h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .comp-location {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: 0.2rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-premium { background-color: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.2); }
+        .badge-mass { background-color: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.2); }
+        .badge-local { background-color: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
+
+        .comp-pro-con {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.88rem;
+        }
+
+        .comp-bullet {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .comp-bullet-icon {
+            font-size: 0.95rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .comp-pro { color: var(--success); }
+        .comp-con { color: var(--danger); }
+
+        /* Calculator Styles */
+        .calc-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .calc-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .calc-form {
+            background-color: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            outline: none;
+            font-size: 0.92rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-light);
+        }
+
+        .calc-result {
+            background: linear-gradient(135deg, var(--primary-glow), rgba(14, 165, 233, 0.05));
+            border: 1px dashed var(--primary-light);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .result-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            margin: 0.5rem 0;
+            text-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        /* Timeline Roadmap styles */
+        .roadmap-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            bottom: 5px;
+            left: 7px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -2rem;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--bg-primary);
+            border: 3px solid var(--text-secondary);
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .timeline-item.active .timeline-marker {
+            border-color: var(--primary-light);
+            background-color: var(--primary-light);
+            box-shadow: 0 0 10px var(--primary-light);
+        }
+
+        .timeline-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-phase {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-body {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .timeline-bullets {
+            list-style: none;
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .timeline-bullets li::before {
+            content: "•";
+            color: var(--primary-light);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+        }
+
+        /* Headings & markdown replacements */
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            aside {
+                left: -280px;
+            }
+            aside.open {
+                left: 0;
+            }
+            main {
+                margin-left: 0;
+                padding: 1.5rem 1.5rem;
+            }
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            .search-container {
+                width: 100%;
+            }
+            .menu-toggle {
+                display: block !important;
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left Sidebar -->
+    <aside id="sidebar">
+        <div class="logo-container">
+            <div class="logo-icon">MC</div>
+            <div class="logo-text">Tập đoàn Minh Cường</div>
+        </div>
+
+        <nav>
+            <div class="nav-item active" onclick="switchSection('dashboard')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
+                <span>Bảng điều khiển R&D</span>
+            </div>
+            <div class="nav-item" onclick="switchSection('tape-specs')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                <span>Đặc tính Băng dính</span>
+            </div>
+            <div class="nav-item" onclick="switchSection('shrink-specs')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><path d="M7 2v20M17 2v20M2 12h20M2 7h20M2 17h20"></path></svg>
+                <span>Đặc tính Màng co</span>
+            </div>
+            <div class="nav-item" onclick="switchSection('product-guide')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Cẩm nang Sản phẩm & QC</span>
+            </div>
+            <div class="nav-item" onclick="switchSection('market-research')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                <span>Thị trường Hải Phòng</span>
+            </div>
+            <div class="nav-item" onclick="switchSection('competitors')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span>Phân tích Đối thủ</span>
+            </div>
+            <div class="nav-item" onclick="switchSection('sourcing')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                <span>Nguồn cung ứng</span>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" onclick="toggleTheme()">
+                <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;">
+                    <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <span id="theme-btn-text">Giao diện Sáng</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Workspace Content -->
+    <main>
+        <header>
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <button class="menu-toggle" onclick="toggleSidebar()" style="display:none;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <div class="header-title-section">
+                    <h1 id="main-title">Bảng điều khiển R&D</h1>
+                    <p id="main-subtitle">Lộ trình nghiên cứu sản phẩm và định vị thị trường</p>
+                </div>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" class="search-input" placeholder="Tìm kiếm nội dung..." onkeyup="searchContent(this.value)">
+            </div>
+        </header>
+
+        <!-- SECTION: DASHBOARD -->
+        <section id="section-dashboard" class="content-section active">
+            <div class="callout">
+                <strong>Định hướng mục tiêu R&D:</strong> Thiết lập cơ sở kỹ thuật vật liệu chuẩn cho các dòng sản phẩm đóng gói (Băng dính & Màng PE), giải quyết bài toán tối ưu tỷ suất lợi nhuận bằng phương thức nhập Jumbo roll bán thành phẩm cắt cuộn tại Việt Nam.
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon-container">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <h3>4 Phase Lộ Trình</h3>
+                    <p>Phân chia rõ rệt từ nghiên cứu thị trường ban đầu, quy chuẩn đặc tính kỹ thuật vật liệu, RFQ chuỗi cung ứng đến bài toán chi phí dòng tiền.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h3>Hai Dòng Sản Phẩm</h3>
+                    <p>Tập trung tối ưu Băng dính OPP dán carton & các dòng băng keo phụ trợ, kết hợp Màng PE quấn căng pallet và Màng co nhiệt POF xuất khẩu.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    </div>
+                    <h3>Năng Lực Agent</h3>
+                    <p>Trợ lý điều phối chung các đặc tính kỹ thuật. Bún chịu trách nhiệm chạy các công cụ scraper khảo sát giá đối thủ trực tiếp và tìm đầu mối nguồn cung.</p>
+                </div>
+            </div>
+
+            <h2>Lộ trình triển khai (R&D Roadmap)</h2>
+            <div class="roadmap-timeline">
+                <div class="timeline-item active">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-phase">Phase 1</span>
+                            <span class="timeline-date">Hiện tại - 07 ngày</span>
+                        </div>
+                        <div class="timeline-title">Nghiên cứu Thị trường & Phân khúc</div>
+                        <div class="timeline-body">
+                            Khảo sát biên giá sàn sỉ/lẻ của các đối thủ OPP, màng PE trên sàn E-commerce và kho logistics công nghiệp.
+                            <ul class="timeline-bullets">
+                                <li>Phân tích thị trường sâu Hải Phòng và tổ hợp công nghiệp FDI.</li>
+                                <li>Phát hiện các điểm lỗi của đối thủ để cải tiến (lõi ngậm bột đá quá nặng, màng rách góc pallet).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-phase">Phase 2</span>
+                            <span class="timeline-date">Tiếp theo - 5 ngày</span>
+                        </div>
+                        <div class="timeline-title">Xác lập Đặc tính kỹ thuật chuẩn</div>
+                        <div class="timeline-body">
+                            Chốt bộ thông số chuẩn làm cơ sở yêu cầu chất lượng (Specs) làm việc với các nhà máy sản xuất thô.
+                            <ul class="timeline-bullets">
+                                <li>Đặc tính Băng dính (độ dày màng thô BOPP, microns keo dính hệ nước).</li>
+                                <li>Quy chuẩn độ đàn hồi màng PE stretch, tỷ lệ co rút màng POF đa lớp.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-phase">Phase 3</span>
+                            <span class="timeline-date">Tiếp theo - 10 ngày</span>
+                        </div>
+                        <div class="timeline-title">Tìm nguồn cung ứng & RFQ</div>
+                        <div class="timeline-body">
+                            Liên hệ các xưởng đùn hạt nhựa, cung cấp Jumbo Roll tại Trung Quốc (Alibaba) và Formosa Đồng Nai để so sánh giá vốn.
+                            <ul class="timeline-bullets">
+                                <li>RFQ báo giá thiết bị chia cuộn tự động 4 trục.</li>
+                                <li>So sánh chi phí với các đơn vị OEM lớn nội địa (Hanopro, Cao Đông Thịnh).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-phase">Phase 4</span>
+                            <span class="timeline-date">Tiếp theo - 5 ngày</span>
+                        </div>
+                        <div class="timeline-title">Xây dựng Mô hình Tài chính & Kế hoạch sản xuất</div>
+                        <div class="timeline-body">
+                            Tính toán chi tiết giá thành sản xuất ra mỗi cuộn thành phẩm (nguyên liệu + khấu hao dao cắt + lõi + nhân công + điện). Xác định điểm hòa vốn và xây dựng giá phân phối bán buôn tối ưu.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: TAPE SPECS -->
+        <section id="section-tape-specs" class="content-section">
+            <div class="callout success">
+                <strong>Băng dính OPP đóng gói:</strong> Gồm màng film BOPP dai được tráng lớp keo Acrylic bám dính cực tốt. Có các phân khúc độ dày tổng từ 40mic đến 60mic tùy nhu cầu tải trọng kiện hàng.
+            </div>
+
+            <h2>Bảng thông số kỹ thuật tiêu chuẩn (OPP Tape specs)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Đặc tính vật lý</th>
+                            <th>Đơn vị đo</th>
+                            <th>Giá trị tiêu chuẩn</th>
+                            <th>Phương pháp kiểm nghiệm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Độ dày màng BOPP thô (Film)</td>
+                            <td>micron (µm)</td>
+                            <td>23 - 28</td>
+                            <td>ASTM D3652</td>
+                        </tr>
+                        <tr>
+                            <td>Độ dày lớp keo phủ (Glue)</td>
+                            <td>micron (µm)</td>
+                            <td>15 - 25</td>
+                            <td>ASTM D3652</td>
+                        </tr>
+                        <tr>
+                            <td>Độ dày tổng cộng (Total Thickness)</td>
+                            <td>micron (µm)</td>
+                            <td>40 - 60</td>
+                            <td>ASTM D3652</td>
+                        </tr>
+                        <tr>
+                            <td>Lực bám dính lột màng (Peel Adhesion)</td>
+                            <td>N/25mm</td>
+                            <td>&ge; 5.0 - 7.0 (Góc lột 180 độ)</td>
+                            <td>ASTM D3330</td>
+                        </tr>
+                        <tr>
+                            <td>Độ bền kéo đứt (Tensile Strength)</td>
+                            <td>N/25mm</td>
+                            <td>&ge; 70 - 90</td>
+                            <td>ASTM D3759</td>
+                        </tr>
+                        <tr>
+                            <td>Độ giãn dài tối đa (Elongation)</td>
+                            <td>%</td>
+                            <td>120% - 150%</td>
+                            <td>ASTM D3759</td>
+                        </tr>
+                        <tr>
+                            <td>Độ dính ban đầu (Ball Tack)</td>
+                            <td>mm (đường lăn)</td>
+                            <td>&le; 80 - 100 (Cầu bi thép)</td>
+                            <td>JIS Z0237</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Phân khúc Độ dày & Ứng dụng thực tế</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>40 - 43 Mic (Tiết kiệm)</h3>
+                    <p>Dùng đóng gói bưu phẩm nhẹ chuyển phát nhanh (< 10kg). Thích hợp cho các shop e-commerce bán quần áo, mỹ phẩm, các đồ gọn nhẹ.</p>
+                </div>
+                <div class="card">
+                    <h3>45 - 48 Mic (Tiêu chuẩn)</h3>
+                    <p>Dùng dán thùng carton trung bình (10 - 20kg). Dòng sản phẩm bán chạy nhất trong công nghiệp dán thùng tự động và kho hàng phân phối.</p>
+                </div>
+                <div class="card">
+                    <h3>50 - 55 Mic (Cao cấp)</h3>
+                    <p>Chuyên dùng dán thùng carton nặng (> 20kg), bọc pallet lưu kho đông lạnh ẩm ướt hoặc hàng xuất khẩu chịu va đập cơ học cao.</p>
+                </div>
+            </div>
+
+            <h2>Băng dính công nghiệp chuyên dụng (Specialized Tapes)</h2>
+            <ul>
+                <li><strong>Băng dính Giấy (Masking Tape):</strong> Màng giấy nhăn crepe dẻo, keo cao su tự nhiên không bám vết dính khi bóc. Chịu nhiệt độ lò sấy sơn $120^\circ C - 150^\circ C$.</li>
+                <li><strong>Băng dính Cách điện PVC:</strong> Màng PVC kháng lửa tự tắt đạt tiêu chuẩn UL 510 chịu áp lực điện lên đến 600V.</li>
+                <li><strong>Băng dính hai mặt Acrylic cường lực:</strong> Xốp đặc Acrylic bám dính siêu mạnh thay thế đinh vít cơ khí trên linh kiện ô tô, quảng cáo.</li>
+                <li><strong>Băng dính sợi thủy tinh:</strong> Gia cố lưới sợi thủy tinh bền dai chịu lực đứt cực đại &ge; 300 N/25mm chằng buộc pallet sắt thép.</li>
+                <li><strong>Băng dính Nhôm (Băng dính Bạc):</strong> Dán mối nối cách nhiệt đường ống thông gió điều hòa HVAC.</li>
+            </ul>
+
+            <h2 style="margin-top: 3rem;">Công cụ tính toán chiều dài Băng keo cuộn tròn</h2>
+            <div class="callout warning">
+                Sử dụng công thức R&D toán học tròn rỗng để xác định chiều dài dây keo thật của cuộn dựa trên các thông số ngoài đo được bằng thước kẹp.
+            </div>
+
+            <div class="calc-container">
+                <div class="calc-form">
+                    <div class="form-group">
+                        <label for="tape-outer-D">Đường kính ngoài cuộn (D) - mm</label>
+                        <input type="number" id="tape-outer-D" value="110" step="1" oninput="calculateTapeLength()">
+                    </div>
+                    <div class="form-group">
+                        <label for="tape-inner-d">Đường kính ngoài lõi giấy (d) - mm</label>
+                        <input type="number" id="tape-inner-d" value="82" step="1" oninput="calculateTapeLength()">
+                    </div>
+                    <div class="form-group">
+                        <label for="tape-thickness-t">Độ dày dải băng keo (t) - micron</label>
+                        <input type="number" id="tape-thickness-t" value="48" step="1" oninput="calculateTapeLength()">
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <span class="result-label">Chiều dài dây keo tính toán</span>
+                    <span class="result-number" id="tape-length-result">90.2 m</span>
+                    <span class="result-label" id="tape-yard-result">≈ 98.6 Yard</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: SHRINK SPECS -->
+        <section id="section-shrink-specs" class="content-section">
+            <div class="callout success">
+                <strong>Màng co nhiệt & Màng quấn căng:</strong> Màng quấn PE căng quấn pallet dùng lực kéo giãn cơ học tự khóa kiện hàng. Màng co nhiệt POF/PVC dùng nhiệt độ ôm khít hộp sản phẩm bảo vệ thẩm mỹ.
+            </div>
+
+            <h2>Màng quấn PE căng (PE Stretch Film specs)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Thông số</th>
+                            <th>Màng quấn tay (Hand Roll)</th>
+                            <th>Màng quấn máy (Machine Roll)</th>
+                            <th>Phương pháp kiểm tra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Độ dày màng</td>
+                            <td>17 - 20 micron (µm)</td>
+                            <td>23 - 25 micron (µm)</td>
+                            <td>ASTM D3652</td>
+                        </tr>
+                        <tr>
+                            <td>Tỷ lệ kéo căng tối đa</td>
+                            <td>200% - 300%</td>
+                            <td>300% - 400%</td>
+                            <td>ASTM D882</td>
+                        </tr>
+                        <tr>
+                            <td>Lực chịu đâm thủng</td>
+                            <td>&ge; 15 N</td>
+                            <td>&ge; 25 N</td>
+                            <td>ASTM D5748</td>
+                        </tr>
+                        <tr>
+                            <td>Lực bền kéo đứt (dọc)</td>
+                            <td>&ge; 30 MPa</td>
+                            <td>&ge; 38 MPa</td>
+                            <td>ASTM D882</td>
+                        </tr>
+                        <tr>
+                            <td>Khổ rộng tiêu chuẩn</td>
+                            <td>500 mm (0.5m)</td>
+                            <td>500 mm (0.5m)</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Trọng lượng lõi giấy thông dụng</td>
+                            <td>0.2 - 0.5 kg</td>
+                            <td>1.0 - 1.5 kg</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Màng co nhiệt POF (POF Shrink Film specs)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Đặc tính vật lý</th>
+                            <th>Độ dày 15 micron (Phổ biến nhất)</th>
+                            <th>Độ dày 19 micron (Chịu lực cao)</th>
+                            <th>Phương pháp kiểm tra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Độ trong suốt truyền sáng</td>
+                            <td>&ge; 90%</td>
+                            <td>&ge; 88%</td>
+                            <td>ASTM D1003</td>
+                        </tr>
+                        <tr>
+                            <td>Tỷ lệ co rút nhiệt (MD/TD)</td>
+                            <td>60% / 60% (tại 120°C trong 5 giây)</td>
+                            <td>60% / 60%</td>
+                            <td>ASTM D2732</td>
+                        </tr>
+                        <tr>
+                            <td>Độ bền chịu đâm thủng</td>
+                            <td>&ge; 8.0 N</td>
+                            <td>&ge; 12.0 N</td>
+                            <td>ASTM D5748</td>
+                        </tr>
+                        <tr>
+                            <td>Cấu trúc đa lớp đồng đùn</td>
+                            <td>PP / PE / PP (3 hoặc 5 lớp)</td>
+                            <td>PP / PE / PP (3 hoặc 5 lớp)</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Công cụ tính trọng lượng lý thuyết cuộn màng PE</h2>
+            <div class="callout warning">
+                Nhập các kích thước của cuộn màng PE để tự động tính toán ra khối lượng thực tế của màng nhựa (chưa tính khối lượng của lõi giấy bên trong) dựa trên khối lượng riêng tiêu chuẩn của hạt nhựa LLDPE ($0.92 \text{ g/cm}^3$).
+            </div>
+
+            <div class="calc-container">
+                <div class="calc-form">
+                    <div class="form-group">
+                        <label for="pe-width">Chiều rộng cuộn màng (m)</label>
+                        <input type="number" id="pe-width" value="0.5" step="0.05" oninput="calculatePEWeight()">
+                    </div>
+                    <div class="form-group">
+                        <label for="pe-length">Chiều dài dải màng (m)</label>
+                        <input type="number" id="pe-length" value="300" step="10" oninput="calculatePEWeight()">
+                    </div>
+                    <div class="form-group">
+                        <label for="pe-thickness">Độ dày màng (micron)</label>
+                        <input type="number" id="pe-thickness" value="17" step="1" oninput="calculatePEWeight()">
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <span class="result-label">Trọng lượng màng thực tế (Không lõi)</span>
+                    <span class="result-number" id="pe-weight-result">2.35 kg</span>
+                    <span class="result-label" id="pe-density-info">Dựa trên khối lượng riêng LLDPE: 0.92 g/cm³</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PRODUCT GUIDE -->
+        <section id="section-product-guide" class="content-section">
+            <h2>Kiểm nghiệm Chất lượng Sản phẩm (Testing Methods)</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Peel Adhesion Test</h3>
+                    <p>Lực bóc lột góc 180 độ tấm thép tiêu chuẩn. Đảm bảo keo không tách màng khi dán hộp nặng chịu rung rắc container.</p>
+                </div>
+                <div class="card">
+                    <h3>Ball Tack Test</h3>
+                    <p>Thả bi lăn thép xuống dốc nghiêng để xem viên bi dừng lại sau bao nhiêu mm. Xác định khả năng bám dính nhanh tức thời khi ngón tay miết vào.</p>
+                </div>
+                <div class="card">
+                    <h3>Tensile & Elongation</h3>
+                    <p>Kéo dải băng dính/màng PE đến khi đứt hoàn toàn. Màng quấn tốt cần độ giãn dài dai lớn hơn 300% để tiết kiệm vật tư đóng gói.</p>
+                </div>
+            </div>
+
+            <h2>Phương pháp kiểm QC nhanh tại kho nhận hàng (Mẹo chống gian lận)</h2>
+            <div class="callout warning">
+                Đa số các cơ sở gia công không thương hiệu trên thị trường sử dụng lõi giấy pha bột đá siêu dày để đánh lừa khách hàng khi bán theo cân nặng. Hãy áp dụng các bước QC nhanh dưới đây:
+            </div>
+
+            <ul>
+                <li><strong>Cân lõi giấy riêng biệt:</strong> Yêu cầu xưởng gia công cung cấp rõ khối lượng lõi giấy dùng quấn. Khi nghiệm thu, cắt dọc 1 cuộn ngẫu nhiên để lấy lõi ra cân riêng. Tiêu chuẩn lõi giấy cuộn băng keo OPP chỉ được nặng từ 0.12kg đến 0.15kg. Lõi màng PE quấn tay chỉ nặng 0.2kg - 0.3kg.</li>
+                <li><strong>Sử dụng thước đo kẹp kỹ thuật:</strong> Kiểm tra độ dày dải băng keo bằng thước kẹp độ dày chuyên dụng có chia vạch micron. Nếu mua dải 48 micron nhưng đo thực tế chỉ đạt 41 micron, dải keo dính sẽ rất dễ rách đứt khi dán.</li>
+                <li><strong>Dán thử trên hộp carton xơ thô bụi:</strong> Băng dính tốt phủ keo acrylic hệ nước ổn định bám chắc trong vòng 24 giờ mà không tự bong mép góc. Băng keo dỏm sẽ bong mép hoặc để lại vệt keo ướt nhầy nhụa do pha nhiều dung môi tạp chất rẻ tiền.</li>
+            </ul>
+
+            <h2>Quy đổi đơn vị đo bao bì</h2>
+            <div class="table-container" style="max-width: 600px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Đơn vị xuất phát</th>
+                            <th>Đơn vị quy đổi</th>
+                            <th>Công thức/Giá trị</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 Yard</td>
+                            <td>Mét (m)</td>
+                            <td>0.9144 m</td>
+                        </tr>
+                        <tr>
+                            <td>1 micron (µm)</td>
+                            <td>Milimét (mm)</td>
+                            <td>0.001 mm</td>
+                        </tr>
+                        <tr>
+                            <td>1 kg màng PE thô (17 µm)</td>
+                            <td>Diện tích màng (m2)</td>
+                            <td>63.9 m2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION: MARKET RESEARCH -->
+        <section id="section-market-research" class="content-section">
+            <div class="callout">
+                <strong>Thống kê dung lượng:</strong> Tổng thị trường bao bì phụ trợ tại Việt Nam tăng trưởng liên tục. E-commerce bùng nổ đẩy nhu cầu băng dính OPP lên cao, còn màng PE quấn pallet gắn liền với hệ thống kho vận Logistics cảng biển.
+            </div>
+
+            <h2>Nghiên cứu Sâu Thị trường Hải Phòng (Hai Phong Deep Dive)</h2>
+            <p>Hải Phòng có những đặc trưng cực kỳ tiềm năng, đồng thời đi kèm với các yêu cầu khắt khe đặc thù về dịch vụ vật tư bao bì đóng gói:</p>
+
+            <div class="grid-3">
+                <div class="card" style="border-left: 4px solid var(--accent);">
+                    <h3>Đặc thù Logistics Cảng</h3>
+                    <p>Hệ thống Cảng nước sâu Đình Vũ, Lạch Huyện sở hữu lưu lượng container luân chuyển khổng lồ. Màng PE quấn pallet tại đây yêu cầu cao về khả năng <strong>chống hơi muối biển mặn</strong> và chống ẩm tuyệt đối khi lưu bãi hoặc lênh đênh trên biển hàng tháng trời.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--primary-light);">
+                    <h3>Tổ hợp FDI Công nghệ</h3>
+                    <p>KCN VSIP, Tràng Duệ quy tụ các tập đoàn điện tử lớn (tổ hợp LG, Pegatron...). Nhu cầu của họ không phải là băng keo giá rẻ nhất, mà là băng keo cách điện, băng keo chống tĩnh điện (ESD) có đầy đủ chứng chỉ kiểm định chất lượng (RoHS, SGS) cho quy trình xuất khẩu.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--success);">
+                    <h3>Lợi thế JIT (Just-In-Time)</h3>
+                    <p>Các nhà máy công nghiệp yêu cầu nguồn cung vật tư đóng gói vận hành JIT - giao hàng trong vòng 4-8 giờ sau khi gọi để kho không bị ứ đọng diện tích lưu giữ bao bì phụ. Xưởng gia công hoặc kho trung chuyển đặt trực tiếp tại Hải Phòng là ưu thế sinh tồn.</p>
+                </div>
+            </div>
+
+            <h2>Bản đồ phân phối sản phẩm tại Hải Phòng</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Khu vực / Cảng</th>
+                            <th>Khách hàng mục tiêu</th>
+                            <th>Yêu cầu sản phẩm cốt lõi</th>
+                            <th>Quy cách đóng gói khuyến nghị</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>KCN Tràng Duệ & VSIP HP</strong></td>
+                            <td>Nhà máy linh kiện điện tử (FDI Hàn Quốc, Nhật Bản)</td>
+                            <td>Màng PE quấn máy cực dai, băng keo ESD chống tĩnh điện, POF co hộp mỹ phẩm/linh kiện. Đầy đủ giấy tờ chất lượng.</td>
+                            <td>Màng PE quấn máy 23mic (cuộn lớn 15kg), Băng keo dán thùng 50mic.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hệ thống Cảng & Kho CFS Đình Vũ</strong></td>
+                            <td>Công ty Logistics, kho CFS, bãi container Depot</td>
+                            <td>Màng PE quấn căng tay dẻo dai bọc pallet gỗ/carton chống rách góc sắc, chống nước biển.</td>
+                            <td>Màng PE quấn tay 17mic cuộn thô 2.4kg (lõi mỏng 0.2kg).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>KCN Nomura & KCN An Dương</strong></td>
+                            <td>Nhà máy may mặc dệt may xuất khẩu, da giày</td>
+                            <td>Băng dính dán OPP niêm phong dán chắc trên thùng carton lớn, băng keo in logo thương hiệu niêm phong bảo mật.</td>
+                            <td>Băng keo OPP 48mic bản rộng 48mm hoặc 60mm × 100-200 Yard.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION: COMPETITORS -->
+        <section id="section-competitors" class="content-section">
+            <div class="competitor-filter-bar">
+                <button class="filter-btn active" onclick="filterCompetitors('all')">Tất cả đối thủ</button>
+                <button class="filter-btn" onclick="filterCompetitors('hai-phong')">Xưởng tại Hải Phòng</button>
+                <button class="filter-btn" onclick="filterCompetitors('national')">Quy mô Quốc gia</button>
+            </div>
+
+            <div class="competitor-grid" id="competitors-list">
+                <!-- Hanopro -->
+                <div class="competitor-card" data-tags="national">
+                    <div class="comp-header">
+                        <div class="comp-name-group">
+                            <h3>Hanopro</h3>
+                            <div class="comp-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span>Hà Nội, Hải Phòng, Gia Lâm</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-premium">Premium / FDI</span>
+                    </div>
+                    <div class="comp-pro-con">
+                        <div class="comp-bullet">
+                            <span class="comp-bullet-icon comp-pro">✓</span>
+                            <span>Đầy đủ chứng chỉ xuất khẩu (SDS, RoHS, SGS). Mạnh về băng dính kỹ thuật cao.</span>
+                        </div>
+                        <div class="comp-bullet">
+                            <span class="comp-bullet-icon comp-con">✗</span>
+                            <span>Giá bán phân khúc cao, MOQ lớn, quy trình giấy tờ làm việc đơn hàng nhỏ khá chậm.</span>
+                        </div>
+                    </div>
+                    <p style="font-size:0.85rem;"><strong>Định vị:</strong> Đánh mạnh vào nhà máy FDI nước ngoài, đơn hàng XK lớn. Không tham gia cuộc chiến phá giá sỉ lẻ nội địa.</p>
+                </div>
+
+                <!-- Song Mã -->
+                <div class="competitor-card" data-tags="hai-phong">
+                    <div class="comp-header">
+                        <div class="comp-name-group">
+                            <h3>Song Mã (Stretch Film)</h3>
+                            <div class="comp-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span>Kiến Thụy, Hải Phòng</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-local">Xưởng Local</span>
+                    </div>
+                    <div class="comp-pro-con">
+                        <div class="comp-bullet">
+                            <span class="comp-bullet-icon comp-pro">✓</span>
+                            <span>Chuyên sâu đùn màng PE stretch lớn, tự chủ dây chuyền đùn cán hạt nhựa nên giá PE nội tỉnh Hải Phòng cực cạnh tranh.</span>
+                        </div>
+                        <div class="comp-bullet">
+                            <span class="comp-bullet-icon comp-con">✗</span>
+                            <span>Mặt hàng băng dính yếu, phân phối kênh online/D2C cho shop lẻ hầu như chưa phát triển.</span>
+                        </div>
+                    </div>
+                    <p style="font-size:0.85rem;"><strong>Định vị:</strong> Đè bẹp đối thủ màng PE bằng chi phí ship rẻ nội tỉnh. Bán sỉ pallet hàng loạt cho cảng và kho Đình Vũ.</p>
+                </div>
+
+                <!-- ACP Hải Phòng -->
+                <div class="competitor-card" data-tags="hai-phong">
+                    <div class="comp-header">
+                        <div class="comp-name-group">
+                            <h3>ACP Hải Phòng</h3>
+                            <div class="comp-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span>An Dương, Hải Phòng</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-local">Xưởng Local</span>
+                    </div>
+                    <div class="comp-pro-con">
+                        <div class="comp-bullet">
+                            <span class="comp-bullet-icon comp-pro">✓</span>
+                            <span>Cung cấp giải pháp trọn gói bao bì đóng gói sỉ lẻ (Băng keo, PE stretch, dây đai, xốp foam).</span>
+                        </div>
+                        <div class="comp-bullet">
+                            <span class="comp-bullet-icon comp-con">✗</span>
+                            <span>Năng lực sản xuất màng POF chất lượng cao hoặc các loại băng dính đặc thù điện tử còn chưa sâu sâu.</span>
+                        </div>
+                    </div>
+                    <p style="font-size:0.85rem;"><strong>Định vị:</strong> One-stop shop vật tư cho xưởng công nghiệp quy mô trung bình nội tỉnh.</p>
+                </div>
+
+                <!-- Việt Box -->
+                <div class="competitor-card" data-tags="national">
+                    <div class="comp-header">
+                        <div class="comp-name-group">
+                            <h3>Việt Box</h3>
+                            <div class="comp-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span>TP. Hồ Chí Minh</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-mass">Mass Market</span>
+                    </div>
+                    <div class="comp-pro-con">
+                        <div class="comp-bullet">
+                            <span class="comp-bullet-icon comp-pro">✓</span>
+                            <span>Thống lĩnh kênh bán online D2C cho các shop e-commerce. Định giá công khai minh bạch, hệ thống đặt hàng website tự động tốt.</span>
+                        </div>
+                        <div class="comp-bullet">
+                            <span class="comp-bullet-icon comp-con">✗</span>
+                            <span>Không có xưởng/kho lưu trữ tại miền Bắc. Phí ship hàng cồng kềnh ra Bắc cực đắt và thời gian giao chậm 3-4 ngày.</span>
+                        </div>
+                    </div>
+                    <p style="font-size:0.85rem;"><strong>Định vị:</strong> Độc chiếm sỉ lẻ bao bì giấy, băng dính dán hàng trực tuyến tại miền Nam.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: SOURCING -->
+        <section id="section-sourcing" class="content-section">
+            <div class="callout success">
+                <strong>Chiến lược Sourcing R&D:</strong> Đề xuất giai đoạn đầu nhập khẩu Jumbo roll (Cuộn băng dính khổng lồ đã phủ keo) từ Phúc Kiến/Hàn Quốc kết hợp đặt lõi giấy nội địa Việt Nam cắt chia nhỏ cuộn để hạn chế chi phí đầu tư máy đùn thổi hạt nhựa cồng kềnh.
+            </div>
+
+            <h2>Đầu mối cung cấp Nguyên vật liệu thô (Raw Materials)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nhóm nguyên liệu</th>
+                            <th>Tên nhà cung cấp / Thương hiệu</th>
+                            <th>Mã nguyên liệu nổi bật</th>
+                            <th>Đặc tính & Ứng dụng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Hạt nhựa LLDPE</strong></td>
+                            <td>Sabic (Saudi Arabia)</td>
+                            <td>LLDPE 218W / 118N</td>
+                            <td>Dai, bóng bề mặt tốt, dùng nhiều cho màng PE stretch bọc pallet.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hạt nhựa mLLDPE</strong></td>
+                            <td>ExxonMobil (Mỹ)</td>
+                            <td>Exceed™ 1018</td>
+                            <td>Nhựa dòng metallocene tăng cực hạn độ đàn hồi và chống đâm thủng cho màng co siêu mỏng.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Màng BOPP cuộn thô</strong></td>
+                            <td>Formosa Plastics (Nhà máy Đồng Nai)</td>
+                            <td>Màng thô 23mic, 25mic</td>
+                            <td>Màng nhựa thô chưa tráng keo dính, chất lượng cao đồng đều sản xuất trực tiếp ở VN.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Jumbo Roll phủ keo sẵn</strong></td>
+                            <td>Fujian Guxiang Machinery & Adhesive (TQ)</td>
+                            <td>Băng keo cuộn lớn 1.28m</td>
+                            <td>Đầu mối xuất khẩu Jumbo rolls lớn uy tín cung cấp bán thành phẩm cho các xưởng slitting VN.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lõi giấy lõi carton</strong></td>
+                            <td>Xưởng Ống giấy Khải Dương (Hải Dương)</td>
+                            <td>Ống lõi phi 76mm</td>
+                            <td>Lõi giấy chịu lực ép ép cuộn tốc độ cao của máy chia cuộn.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Máy móc thiết bị gia công (Machinery Portfolio)</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Máy chia cuộn Băng dính</h3>
+                    <p>Thiết bị chia từ cuộn Jumbo 1.28m thành các cuộn nhỏ 48mm. Hệ thống 4 trục cuốn hoạt động xoay tua liên tục tự động dán lõi.</p>
+                    <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--primary-light);">Giá tham khảo: 150 - 250 triệu VNĐ</p>
+                </div>
+                <div class="card">
+                    <h3>Máy đùn cán màng PE Stretch</h3>
+                    <p>Sản xuất màng PE thô bằng phương pháp thổi đùn hạt nhựa LLDPE lỏng qua khe dẹp 3-5 lớp đồng đùn.</p>
+                    <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--primary-light);">Cần hạ tầng điện 3 pha và nhà xưởng cao rộng</p>
+                </div>
+                <div class="card">
+                    <h3>Máy cắt lõi giấy tự động</h3>
+                    <p>Cắt ống giấy dài thành các vòng tròn nhỏ 4.8cm, 6.0cm tương thích chính xác với quy cách chiều rộng băng keo.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Switch content section tabs
+        function switchSection(sectionId) {
+            // Remove active classes
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+            
+            // Add active classes
+            const activeNav = Array.from(document.querySelectorAll('.nav-item')).find(item => 
+                item.getAttribute('onclick').includes(sectionId)
+            );
+            if (activeNav) activeNav.classList.add('active');
+            
+            const activeSec = document.getElementById('section-' + sectionId);
+            if (activeSec) activeSec.classList.add('active');
+            
+            // Update header title based on active section
+            const titles = {
+                'dashboard': ['Bảng điều khiển R&D', 'Lộ trình nghiên cứu sản phẩm và định vị thị trường'],
+                'tape-specs': ['Thông số kỹ thuật Băng dính', 'Đặc tính cấu trúc, microns độ dày và các dòng sản phẩm'],
+                'shrink-specs': ['Thông số kỹ thuật Màng co', 'Màng PE quấn stretch, màng co nhiệt POF/PVC/PET'],
+                'product-guide': ['Cẩm nang Sản phẩm & QC nhanh', 'Các phương pháp thử nghiệm chất lượng và kiểm nghiệm chống gian lận'],
+                'market-research': ['Thị trường Hải Phòng Deep Dive', 'Nhu cầu logistics cảng biển, khu công nghiệp và JIT'],
+                'competitors': ['Phân tích Đối thủ cạnh tranh', 'So sánh đối thủ quốc gia và cục bộ Hải Phòng'],
+                'sourcing': ['Chuỗi cung ứng & Sourcing', 'Danh mục đối tác cung cấp nguyên liệu và máy móc sản xuất']
+            };
+            
+            document.getElementById('main-title').innerText = titles[sectionId][0];
+            document.getElementById('main-subtitle').innerText = titles[sectionId][1];
+
+            // Close sidebar on mobile after clicking
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        }
+
+        // Search bar filtration
+        function searchContent(query) {
+            query = query.toLowerCase().trim();
+            if (query === '') {
+                // reset views
+                document.querySelectorAll('tr').forEach(tr => tr.style.display = '');
+                document.querySelectorAll('.card').forEach(card => card.style.display = '');
+                document.querySelectorAll('.competitor-card').forEach(cc => cc.style.display = '');
+                return;
+            }
+
+            // Search in table rows
+            document.querySelectorAll('tbody tr').forEach(tr => {
+                const text = tr.innerText.toLowerCase();
+                tr.style.display = text.includes(query) ? '' : 'none';
+            });
+
+            // Search in cards
+            document.querySelectorAll('.card').forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(query) ? '' : 'none';
+            });
+
+            // Search in competitor cards
+            document.querySelectorAll('.competitor-card').forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+
+        // Competitor grid filter buttons
+        function filterCompetitors(filter) {
+            document.querySelectorAll('.competitor-filter-bar .filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.competitor-card');
+            cards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = '';
+                } else {
+                    const tags = card.getAttribute('data-tags');
+                    card.style.display = tags.includes(filter) ? '' : 'none';
+                }
+            });
+        }
+
+        // Dark/Light Theme toggler
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            
+            const btnText = document.getElementById('theme-btn-text');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (newTheme === 'light') {
+                btnText.innerText = 'Giao diện Tối';
+                themeIcon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+            } else {
+                btnText.innerText = 'Giao diện Sáng';
+                themeIcon.innerHTML = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+            }
+        }
+
+        // Sidebar mobile toggler
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        // REAL-TIME CALCULATORS LOGIC
+        
+        // 1. Tape Length Calculator
+        function calculateTapeLength() {
+            const D = parseFloat(document.getElementById('tape-outer-D').value); // Outer diameter (mm)
+            const d = parseFloat(document.getElementById('tape-inner-d').value); // Inner diameter (mm)
+            const t = parseFloat(document.getElementById('tape-thickness-t').value); // Thickness (micron)
+            
+            if (isNaN(D) || isNaN(d) || isNaN(t) || D <= d || t <= 0) {
+                document.getElementById('tape-length-result').innerText = "--";
+                document.getElementById('tape-yard-result').innerText = "Vui lòng nhập số hợp lệ";
+                return;
+            }
+
+            // L = pi * (D^2 - d^2) / (4 * t)
+            // convert D, d to meters: D_m = D / 1000, d_m = d / 1000
+            // convert t to meters: t_m = t / 1000000
+            const D_m = D / 1000;
+            const d_m = d / 1000;
+            const t_m = t / 1000000;
+            
+            const L = (Math.PI * (Math.pow(D_m, 2) - Math.pow(d_m, 2))) / (4 * t_m);
+            const yard = L / 0.9144;
+
+            document.getElementById('tape-length-result').innerText = L.toFixed(1) + " m";
+            document.getElementById('tape-yard-result').innerText = "≈ " + yard.toFixed(1) + " Yard";
+        }
+
+        // 2. PE Stretch Film Weight Calculator
+        function calculatePEWeight() {
+            const width = parseFloat(document.getElementById('pe-width').value); // Width (m)
+            const length = parseFloat(document.getElementById('pe-length').value); // Length (m)
+            const thickness = parseFloat(document.getElementById('pe-thickness').value); // Thickness (micron)
+            
+            if (isNaN(width) || isNaN(length) || isNaN(thickness) || width <= 0 || length <= 0 || thickness <= 0) {
+                document.getElementById('pe-weight-result').innerText = "--";
+                return;
+            }
+
+            // Density of LLDPE = 0.92 g/cm3 = 920 kg/m3
+            // Thickness in mm = thickness / 1000
+            // Weight = width * length * (thickness/1000/1000) * 920
+            const thickness_m = thickness / 1000000;
+            const weight = width * length * thickness_m * 920;
+
+            document.getElementById('pe-weight-result').innerText = weight.toFixed(2) + " kg";
+        }
+
+        // Initial calculations on load
+        window.onload = function() {
+            calculateTapeLength();
+            calculatePEWeight();
+        }
+    </script>
+</body>
+</html>
