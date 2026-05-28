@@ -89,3 +89,18 @@ Khi nhận hàng số lượng lớn từ nhà cung cấp/xưởng gia công, nh
         *   $L$: Chiều dài dải màng (mét).
         *   $T$: Độ dày màng (mm - ví dụ: 17 micron = $0.017 \text{ mm}$).
         *   $d$: Khối lượng riêng của hạt nhựa PE thô (xấp xỉ $0.92 \text{ g/cm}^3$ đối với LLDPE).
+
+---
+
+## 5. Bảng xử lý Sự cố Đóng gói Thường gặp (Troubleshooting Guide)
+
+Trong quá trình sử dụng băng dính và màng co tại kho hàng hoặc dây chuyền sản xuất tự động, một số sự cố kỹ thuật có thể phát sinh. Dưới đây là bảng chẩn đoán lỗi và cách khắc phục:
+
+| Hiện tượng lỗi | Nguyên nhân cốt lõi | Hành động khắc phục |
+| :--- | :--- | :--- |
+| **Băng dính bị bong mép** ở góc thùng carton sau khi dán. | - Keo Acrylic hệ nước chất lượng kém dễ khô hóa.<br>- Bề mặt bìa carton chứa nhiều xơ giấy thô/bụi bẩn.<br>- Thời tiết lưu kho quá lạnh hoặc quá ẩm. | - Sử dụng băng dính độ dày keo $\ge 20 \mu m$ (độ dày tổng &ge; 48mic).<br>- Sử dụng keo Acrylic hệ dầu (dung môi) có độ dính cao hơn.<br>- Lau sạch bề mặt carton trước khi miết keo. |
+| **Màng PE quấn pallet bị rách toạc** ở góc nhọn. | - Màng quá mỏng (&le; 15mic) so với tải trọng kiện hàng.<br>- Màng chứa tỷ lệ hạt nhựa PE tái sinh cao làm mất độ dai.<br>- Tốc độ hoặc lực căng máy quấn quá lớn. | - Nâng độ dày màng quấn tay lên 17-20mic, quấn máy lên 23-25mic.<br>- Sử dụng 100% nhựa LLDPE nguyên sinh chất lượng cao.<br>- Quấn tăng cường 2-3 vòng gia cố tại chân pallet và góc nhọn. |
+| **Băng dính bị đứt ngang** liên tục khi kéo dán. | - Màng BOPP thô làm lớp nền quá mỏng (&le; 23mic).<br>- Lưỡi dao cắt của thiết bị cầm tay bị mẻ, cùn làm rách mép tạo điểm đứt.<br>- Cuộn băng dính bị va đập móp mép bên hông khi vận chuyển. | - Đảm bảo độ dày màng BOPP thô $\ge 25 \mu m$.<br>- Kiểm tra và thay thế lưỡi dao cắt cầm tay định kỳ.<br>- Bảo quản cuộn băng dính nằm ngang, tránh dựng đứng đè nén làm hỏng mép. |
+| **Màng co nhiệt POF bị nhăn** hoặc phồng bong bóng sau buồng nhiệt. | - Nhiệt độ buồng co quá thấp hoặc tốc độ băng chuyền quá nhanh.<br>- Lỗ thoát khí trên màng co bị bít kín làm khí không thoát được khi màng co lại. | - Tăng nhiệt độ buồng co ($140^\circ C - 160^\circ C$) hoặc giảm tốc độ băng chuyền.<br>- Đảm bảo thiết bị đục lỗ kim (perforator) hoạt động tốt trên máy bọc màng. |
+| **Màng co nhiệt PVC/POF bị giòn rách** tại đường hàn cắt. | - Nhiệt độ của lưỡi hàn/dao cắt quá cao làm cháy màng nhựa.<br>- Thời gian hàn cắt quá lâu hoặc áp lực dao hàn đè không đều. | - Giảm nhiệt độ thanh hàn hoặc thời gian tiếp xúc hàn cắt.<br>- Vệ sinh bụi nhựa cháy bám trên thanh dao hàn cắt. |
+
