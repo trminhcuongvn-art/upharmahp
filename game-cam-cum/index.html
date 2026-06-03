@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Upharma Pharmacy Rush</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;min-height:100%;background:#04201c;color:#ecfdf5;font-family:system-ui,Segoe UI,Roboto,Arial}
+  #stage{position:relative;width:100%;max-width:480px;margin:0 auto;min-height:100vh;background:linear-gradient(#063b33,#04201c);overflow:hidden}
+  .main{padding:12px}
+  .hud{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:17px;background:#022c22;border-radius:14px;padding:10px 14px}
+  .timewrap{height:10px;background:#063b33;border-radius:6px;margin:12px 0;overflow:hidden}
+  .timebar{height:100%;width:100%;background:#34d399;transition:width .1s linear}
+  .cust{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+  .avatar{font-size:40px;flex:0 0 auto;animation:walkin .4s ease}
+  @keyframes walkin{from{transform:translateX(-40px);opacity:0}to{transform:none;opacity:1}}
+  .bubble{background:#ecfdf5;color:#022c22;border-radius:14px;padding:12px 14px;font-size:15px;line-height:1.4;flex:1}
+  .flash{height:24px;text-align:center;font-weight:700;font-size:16px;opacity:0;transition:opacity .2s;margin:4px 0}
+  .panel{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  .phaselabel{font-size:14px;color:#a7f3d0;margin:2px 0 4px}
+  .choice{padding:13px 14px;border-radius:14px;border:1px solid #34d39955;background:#022c22;color:#ecfdf5;text-align:left;font-size:15px;cursor:pointer}
+  .choice:active{transform:scale(.98)}
+  .choice .ans{font-size:13px;color:#6ee7b7;margin-top:4px}
+  .choice.act{border-width:2px;font-weight:600}
+  .choice.skip{background:#063b33;color:#a7f3d0}
+  .emoji{font-size:20px;margin-right:4px}
+  .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:#021815ee;backdrop-filter:blur(2px);z-index:5}
+  .overlay h1{font-size:24px;margin:10px 0}
+  .overlay p,.p{color:#d1fae5;font-size:15px;line-height:1.6;max-width:380px;text-align:left}
+  .btn{margin-top:18px;padding:14px 26px;border:none;border-radius:16px;background:#34d399;color:#022c22;font-size:18px;font-weight:700;cursor:pointer}
+  .btn:active{transform:scale(.97)}
+  .btn:disabled{opacity:.5}
+  .hide{display:none}
+  .small{font-size:13px;color:#6ee7b7;text-align:center}
+
+  .journey{background:#022c2288;border:1px solid #34d39933;border-radius:14px;padding:10px;margin:10px 0}
+  .journeyTop{display:flex;justify-content:space-between;font-size:14px;color:#d1fae5;margin-bottom:7px}
+  .prog{height:9px;background:#064e3b;border-radius:99px;overflow:hidden}.prog>div{height:100%;background:linear-gradient(90deg,#34d399,#fbbf24);transition:width .3s}
+  .miles{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.mile{font-size:11px;border:1px solid #34d39933;border-radius:99px;padding:4px 6px;color:#a7f3d0}.mile.done{background:#34d399;color:#022c22;font-weight:700}
+  .learnCard{justify-content:flex-start;overflow:auto;text-align:left;padding:18px}.learnCard h1{text-align:center;width:100%}.badgeBig{background:#fbbf24;color:#422006;border-radius:16px;padding:10px 14px;text-align:center;font-weight:800;margin:6px auto}.badgeBig small{font-weight:600}
+  .answerBox{background:#064e3b;border:1px solid #34d39955;border-radius:12px;padding:10px;margin:6px 0;color:#ecfdf5}.lesson{font-size:14px;line-height:1.45;color:#d1fae5}.lesson h3{font-size:15px;margin:12px 0 4px;color:#86efac}.lesson p{margin:4px 0}.lesson ul{margin:4px 0 0 18px;padding:0}.lesson li{margin:3px 0}.tip{background:#022c22;border-left:4px solid #34d399;padding:8px;border-radius:8px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="startScreen" class="overlay">
+    <div class="small">Game đào tạo nội bộ · Không thay thế tư vấn dược sĩ</div>
+    <h1>💊 Upharma Pharmacy Rush</h1>
+    <p>Khách tới quầy nói triệu chứng. <b>Bước 1:</b> hỏi sàng lọc (tuổi, thai kỳ, dấu hiệu nặng). <b>Bước 2:</b> chọn hướng xử lý đúng trước khi hết giờ.<br>Sai ca nguy hiểm bị phạt nặng. Hết uy tín là đóng cửa. Mỗi lượt có thẻ kiến thức để học.</p>
+    <button class="btn" id="startBtn">Mở quầy ▶</button>
+  </div>
+  <div id="endScreen" class="overlay hide">
+    <h1 id="endTitle">Hết ca!</h1>
+    <p id="endStats" class="p"></p>
+    <button class="btn" id="againBtn">Chơi lại 🔁</button>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>

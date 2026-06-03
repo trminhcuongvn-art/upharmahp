@@ -1,0 +1,733 @@
+{
+  "version": "v5-cold-flu-progress-deep-explain-2026-06-03",
+  "topic": "Cảm cúm / Cúm / Hô hấp trên",
+  "safety": "Game đào tạo nội bộ. Không thay thế tư vấn dược sĩ/bác sĩ.",
+  "actions_master": [
+    {
+      "id": "otc_symptom",
+      "label": "Tư vấn OTC giảm triệu chứng + theo dõi",
+      "emoji": "💊",
+      "color": "#60a5fa"
+    },
+    {
+      "id": "rest_fluids",
+      "label": "Nghỉ ngơi, bù nước, không cần thuốc đặc trị",
+      "emoji": "🛌",
+      "color": "#34d399"
+    },
+    {
+      "id": "antibiotic",
+      "label": "Bán kháng sinh cho nhanh khỏi",
+      "emoji": "💉",
+      "color": "#fbbf24"
+    },
+    {
+      "id": "refer",
+      "label": "Chuyển Dược sĩ / Bác sĩ khám",
+      "emoji": "⚠️",
+      "color": "#f87171"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "COLD_BASIC_001",
+      "customer_type": "adult",
+      "opening_line": "Em hắt hơi, sổ mũi, ngạt mũi 1 ngày, không sốt. Lấy thuốc cảm giúp em.",
+      "screening": [
+        {
+          "q": "Triệu chứng kéo dài bao lâu rồi?",
+          "a": "Mới 1 ngày.",
+          "good": true
+        },
+        {
+          "q": "Có sốt cao, khó thở, đau ngực không?",
+          "a": "Không, chỉ chảy mũi hắt hơi.",
+          "good": true
+        },
+        {
+          "q": "Bỏ qua hỏi, bán luôn kháng sinh.",
+          "a": "(Bỏ sàng lọc — rủi ro)",
+          "good": false
+        }
+      ],
+      "correct": "combo_cold_otc",
+      "danger_if": [
+        "antibiotic"
+      ],
+      "card": {
+        "title": "Cảm thường (do virus)",
+        "bullets": [
+          "Combo cảm thường: hạ sốt/giảm đau nếu cần + vệ sinh mũi + kháng histamin khi hắt hơi/chảy mũi.",
+          "Không dùng kháng sinh cho cảm do virus.",
+          "Dặn uống nước, nghỉ ngơi, theo dõi sốt cao/khó thở/kéo dài."
+        ]
+      },
+      "actions": [
+        {
+          "id": "combo_cold_otc",
+          "label": "Paracetamol nếu sốt/đau + xịt/rửa mũi NaCl + kháng histamin nếu chảy mũi",
+          "emoji": "💊",
+          "color": "#60a5fa"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Kháng sinh 3 ngày cho nhanh khỏi",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "refer",
+          "label": "Chuyển bác sĩ ngay dù không dấu hiệu nặng",
+          "emoji": "⚠️",
+          "color": "#fbbf24"
+        },
+        {
+          "id": "no_medicine",
+          "label": "Không tư vấn gì, bảo tự khỏi",
+          "emoji": "🛌",
+          "color": "#34d399"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Khách có triệu chứng cảm nhẹ, mới 1 ngày, không sốt cao/khó thở nên xử lý tại quầy bằng combo giảm triệu chứng là hợp lý.",
+        "why_wrong": "Kháng sinh không có tác dụng với cảm virus; refer ngay khi không có dấu hiệu nặng làm giảm trải nghiệm khách.",
+        "counter_checklist": [
+          "Hỏi thời gian bệnh",
+          "Hỏi sốt cao/khó thở/đau ngực",
+          "Hỏi bệnh nền, thai kỳ, thuốc đang dùng",
+          "Dặn theo dõi nếu nặng lên"
+        ],
+        "memory_tip": "Cảm nhẹ = giảm triệu chứng + theo dõi, không kháng sinh."
+      }
+    },
+    {
+      "case_id": "COLD_ANTIBIOTIC_DEMAND_002",
+      "customer_type": "demanding",
+      "opening_line": "Bán cho tôi kháng sinh, cứ cảm là tôi uống cho nhanh khỏi.",
+      "screening": [
+        {
+          "q": "Anh có đơn của bác sĩ không?",
+          "a": "Không, tự mua quen rồi.",
+          "good": true
+        },
+        {
+          "q": "Triệu chứng hiện tại thế nào?",
+          "a": "Chảy mũi, hắt hơi nhẹ, không sốt.",
+          "good": true
+        }
+      ],
+      "correct": "combo_no_abx",
+      "danger_if": [
+        "antibiotic"
+      ],
+      "card": {
+        "title": "Lạm dụng kháng sinh khi cảm",
+        "bullets": [
+          "Kháng sinh không giúp cảm virus và làm tăng kháng thuốc.",
+          "Nên giải thích ngắn gọn, sau đó tư vấn giảm triệu chứng theo biểu hiện.",
+          "Nếu có dấu hiệu nặng mới refer."
+        ]
+      },
+      "actions": [
+        {
+          "id": "combo_no_abx",
+          "label": "Giải thích không kháng sinh + combo giảm triệu chứng phù hợp",
+          "emoji": "✅",
+          "color": "#34d399"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Bán kháng sinh theo yêu cầu khách",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "refer",
+          "label": "Từ chối mọi tư vấn, chuyển khám ngay",
+          "emoji": "⚠️",
+          "color": "#fbbf24"
+        },
+        {
+          "id": "rest_only",
+          "label": "Chỉ bảo uống nước, không tư vấn triệu chứng",
+          "emoji": "🛌",
+          "color": "#60a5fa"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Khách đòi kháng sinh nhưng không có đơn và triệu chứng giống cảm virus. Cách đúng là giải thích ngắn gọn rồi đưa combo giảm triệu chứng.",
+        "why_wrong": "Bán kháng sinh theo yêu cầu là lỗi nguy hiểm: tăng kháng thuốc, sai quy định và tạo thói quen dùng thuốc sai.",
+        "counter_checklist": [
+          "Hỏi có đơn không",
+          "Hỏi triệu chứng nhiễm khuẩn nặng không",
+          "Giải thích cảm virus không cần kháng sinh",
+          "Đề xuất combo giảm triệu chứng"
+        ],
+        "memory_tip": "Khách đòi kháng sinh ≠ được bán kháng sinh."
+      }
+    },
+    {
+      "case_id": "COLD_PREGNANCY_003",
+      "customer_type": "pregnant",
+      "opening_line": "Em mang thai 3 tháng, bị cảm, cho thuốc giống mọi người nhé.",
+      "screening": [
+        {
+          "q": "Chị có đang mang thai hoặc cho con bú không?",
+          "a": "Có, thai 3 tháng.",
+          "good": true
+        },
+        {
+          "q": "Triệu chứng có nặng không?",
+          "a": "Hắt hơi sổ mũi nhẹ.",
+          "good": true
+        }
+      ],
+      "correct": "refer_pregnancy",
+      "danger_if": [
+        "combo_cold_otc",
+        "antibiotic",
+        "herbal"
+      ],
+      "card": {
+        "title": "Cảm ở phụ nữ mang thai",
+        "bullets": [
+          "Thai kỳ cần kiểm hoạt chất, liều, tuổi thai và chống chỉ định.",
+          "Không mặc định thuốc thảo dược là an toàn.",
+          "Phải chuyển dược sĩ/bác sĩ duyệt trước khi bán."
+        ]
+      },
+      "actions": [
+        {
+          "id": "refer_pregnancy",
+          "label": "Chuyển dược sĩ/bác sĩ kiểm thuốc an toàn cho thai kỳ",
+          "emoji": "⚠️",
+          "color": "#f87171"
+        },
+        {
+          "id": "combo_cold_otc",
+          "label": "Combo cảm thường như người lớn",
+          "emoji": "💊",
+          "color": "#60a5fa"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Kháng sinh cho chắc",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "herbal",
+          "label": "Tự chọn thuốc thảo dược vì nghĩ an toàn",
+          "emoji": "🌿",
+          "color": "#34d399"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Thai kỳ là nhóm đặc biệt; nhiều hoạt chất thuốc cảm cần tránh hoặc cần cân nhắc theo tuổi thai.",
+        "why_wrong": "Dùng combo người lớn hoặc thuốc thảo dược tự chọn đều có nguy cơ vì chưa kiểm an toàn cho thai.",
+        "counter_checklist": [
+          "Luôn hỏi thai kỳ/cho con bú",
+          "Không bán theo kinh nghiệm chung",
+          "Kiểm hoạt chất/chống chỉ định",
+          "Chuyển dược sĩ/bác sĩ duyệt"
+        ],
+        "memory_tip": "Mang thai = không bán thuốc cảm như người thường."
+      }
+    },
+    {
+      "case_id": "COLD_CHILD_FEVER_004",
+      "customer_type": "parent_child",
+      "opening_line": "Con tôi 2 tuổi sốt 39.5°C, lừ đừ, vừa co giật nhẹ. Cho thuốc cảm mạnh.",
+      "screening": [
+        {
+          "q": "Bé có co giật, li bì, bỏ bú không?",
+          "a": "Có co giật nhẹ, lừ đừ.",
+          "good": true
+        },
+        {
+          "q": "Sốt bao nhiêu độ, bao lâu?",
+          "a": "39.5°C, vừa xảy ra.",
+          "good": true
+        }
+      ],
+      "correct": "refer_child_emergency",
+      "danger_if": [
+        "combo_child_fever",
+        "antibiotic",
+        "rest_fluids"
+      ],
+      "card": {
+        "title": "Dấu hiệu nguy hiểm ở trẻ",
+        "bullets": [
+          "Trẻ sốt cao + co giật/li bì là dấu hiệu nguy hiểm.",
+          "Không xử lý như cảm cúm thông thường tại quầy.",
+          "Ưu tiên an toàn: hướng dẫn đi cấp cứu/bác sĩ ngay."
+        ]
+      },
+      "actions": [
+        {
+          "id": "refer_child_emergency",
+          "label": "Hướng dẫn đi cấp cứu/bác sĩ ngay",
+          "emoji": "🚑",
+          "color": "#f87171"
+        },
+        {
+          "id": "combo_child_fever",
+          "label": "Hạ sốt tại quầy rồi về theo dõi",
+          "emoji": "💊",
+          "color": "#60a5fa"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Kháng sinh mạnh",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "rest_fluids",
+          "label": "Bù nước nghỉ ngơi tại nhà",
+          "emoji": "🛌",
+          "color": "#34d399"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Trẻ nhỏ sốt cao kèm co giật/li bì là red flag, cần đi cấp cứu/bác sĩ ngay.",
+        "why_wrong": "Chỉ hạ sốt tại quầy rồi về có thể bỏ sót tình trạng nguy hiểm.",
+        "counter_checklist": [
+          "Tuổi của trẻ",
+          "Nhiệt độ bao nhiêu",
+          "Có co giật/li bì/bỏ bú không",
+          "Nếu có red flag: refer ngay"
+        ],
+        "memory_tip": "Trẻ sốt cao + co giật = không xử lý như cảm thường."
+      }
+    },
+    {
+      "case_id": "COLD_FLU_HIGHFEVER_005",
+      "customer_type": "adult",
+      "opening_line": "Tôi sốt cao 39°C, đau mỏi người, ho nhiều 4 ngày không đỡ.",
+      "screening": [
+        {
+          "q": "Sốt cao mấy ngày, có khó thở không?",
+          "a": "4 ngày, hơi tức ngực khi ho.",
+          "good": true
+        },
+        {
+          "q": "Có bệnh nền (tim, phổi, tiểu đường)?",
+          "a": "Có, tôi bị hen.",
+          "good": true
+        }
+      ],
+      "correct": "refer_flu_risk",
+      "danger_if": [
+        "combo_cold_otc",
+        "antibiotic",
+        "rest_fluids"
+      ],
+      "card": {
+        "title": "Cúm nặng / nguy cơ cao",
+        "bullets": [
+          "Sốt cao >3 ngày, tức ngực/khó thở, bệnh nền hô hấp là red flag.",
+          "Cần khám để đánh giá cúm nặng/biến chứng/đợt cấp hen.",
+          "OTC chỉ hỗ trợ, không thay thế khám ở ca nguy cơ."
+        ]
+      },
+      "actions": [
+        {
+          "id": "refer_flu_risk",
+          "label": "Chuyển khám vì sốt cao kéo dài + bệnh nền hen",
+          "emoji": "⚠️",
+          "color": "#f87171"
+        },
+        {
+          "id": "combo_cold_otc",
+          "label": "Paracetamol + thuốc ho + xịt mũi rồi về",
+          "emoji": "💊",
+          "color": "#60a5fa"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Kháng sinh vì ho lâu",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "rest_fluids",
+          "label": "Chỉ nghỉ ngơi uống nước",
+          "emoji": "🛌",
+          "color": "#34d399"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Sốt cao kéo dài, tức ngực và bệnh nền hen làm tăng nguy cơ cúm nặng/biến chứng.",
+        "why_wrong": "OTC thông thường hoặc kháng sinh tự bán không giải quyết được nguy cơ nền và có thể làm chậm đi khám.",
+        "counter_checklist": [
+          "Sốt mấy ngày",
+          "Có khó thở/tức ngực không",
+          "Có bệnh nền tim phổi/hen/tiểu đường không",
+          "Refer nếu nguy cơ cao"
+        ],
+        "memory_tip": "Cúm + bệnh nền + khó thở/sốt kéo dài = refer."
+      }
+    },
+    {
+      "case_id": "COLD_MILD_REST_006",
+      "customer_type": "adult",
+      "opening_line": "Tôi hơi mệt, sụt sịt nhẹ từ sáng, có cần mua thuốc gì không?",
+      "screening": [
+        {
+          "q": "Có sốt hay đau họng nhiều không?",
+          "a": "Không sốt, chỉ sụt sịt nhẹ.",
+          "good": true
+        },
+        {
+          "q": "Ăn uống, sinh hoạt bình thường chứ?",
+          "a": "Vẫn bình thường.",
+          "good": true
+        }
+      ],
+      "correct": "rest_fluids",
+      "danger_if": [
+        "antibiotic"
+      ],
+      "card": {
+        "title": "Cảm rất nhẹ",
+        "bullets": [
+          "Cảm rất nhẹ có thể chỉ cần nghỉ ngơi/bù nước.",
+          "Không upsell quá mức khi chưa cần.",
+          "Dặn quay lại/khám nếu sốt cao, khó thở, kéo dài."
+        ]
+      },
+      "actions": [
+        {
+          "id": "rest_fluids",
+          "label": "Nghỉ ngơi + uống đủ nước + theo dõi, chưa cần mua nhiều thuốc",
+          "emoji": "🛌",
+          "color": "#34d399"
+        },
+        {
+          "id": "combo_many",
+          "label": "Bán combo nhiều món: cảm + ho + kháng viêm + vitamin",
+          "emoji": "🛒",
+          "color": "#fbbf24"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Kháng sinh dự phòng",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "refer",
+          "label": "Chuyển khám ngay dù rất nhẹ",
+          "emoji": "⚠️",
+          "color": "#60a5fa"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Triệu chứng rất nhẹ, không sốt, sinh hoạt bình thường; nghỉ ngơi/bù nước và theo dõi là đủ.",
+        "why_wrong": "Bán combo nhiều món khi chưa cần là upsell quá mức, làm giảm niềm tin.",
+        "counter_checklist": [
+          "Đánh giá mức độ nhẹ/nặng",
+          "Không bán quá nhu cầu",
+          "Dặn dấu hiệu cần quay lại",
+          "Tư vấn chăm sóc không thuốc"
+        ],
+        "memory_tip": "Không phải ca nào cũng cần bán thuốc."
+      }
+    },
+    {
+      "case_id": "COLD_ALLERGY_CONFUSE_007",
+      "customer_type": "adult",
+      "opening_line": "Sáng nào tôi cũng hắt hơi, ngứa mũi, chảy nước mũi trong, mua thuốc cảm.",
+      "screening": [
+        {
+          "q": "Có sốt hay đau người không?",
+          "a": "Không sốt, chỉ ngứa mũi.",
+          "good": true
+        },
+        {
+          "q": "Có theo mùa/buổi sáng/khi gặp bụi không?",
+          "a": "Đúng, sáng và khi quét nhà.",
+          "good": true
+        }
+      ],
+      "correct": "combo_allergic_rhinitis",
+      "danger_if": [
+        "antibiotic"
+      ],
+      "card": {
+        "title": "Viêm mũi dị ứng (dễ nhầm cảm)",
+        "bullets": [
+          "Viêm mũi dị ứng: hắt hơi, ngứa mũi, nước mũi trong, theo mùa/bụi.",
+          "Combo hợp lý: kháng histamin + xịt/rửa mũi NaCl + tránh dị nguyên.",
+          "Không dùng kháng sinh; nếu kéo dài/nặng/tái phát nhiều thì khám chuyên khoa."
+        ]
+      },
+      "actions": [
+        {
+          "id": "combo_allergic_rhinitis",
+          "label": "Kháng histamin + xịt/rửa mũi NaCl + tránh bụi/dị nguyên",
+          "emoji": "🤧",
+          "color": "#60a5fa"
+        },
+        {
+          "id": "combo_cold_otc",
+          "label": "Thuốc cảm tổng hợp + hạ sốt",
+          "emoji": "💊",
+          "color": "#34d399"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Kháng sinh vì chảy nước mũi lâu",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "refer",
+          "label": "Chuyển khám ngay mọi trường hợp",
+          "emoji": "⚠️",
+          "color": "#fbbf24"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Hắt hơi, ngứa mũi, nước mũi trong theo buổi sáng/bụi phù hợp viêm mũi dị ứng; combo đúng là kháng histamin + rửa/xịt NaCl + tránh dị nguyên.",
+        "why_wrong": "Thuốc cảm tổng hợp/hạ sốt không đúng trọng tâm nếu không sốt đau; kháng sinh là sai vì không có nhiễm khuẩn.",
+        "counter_checklist": [
+          "Hỏi có sốt/đau người không",
+          "Hỏi ngứa mũi/nước mũi trong",
+          "Hỏi yếu tố bụi/mùa/sáng sớm",
+          "Tư vấn tránh dị nguyên"
+        ],
+        "memory_tip": "Ngứa mũi + hắt hơi theo bụi/mùa = nghĩ dị ứng."
+      }
+    },
+    {
+      "case_id": "COLD_ELDERLY_COPD_008",
+      "customer_type": "elderly_chronic",
+      "opening_line": "Bố tôi 75 tuổi, bị phổi mạn, mấy hôm nay cảm ho đờm vàng, khó thở hơn.",
+      "screening": [
+        {
+          "q": "Cụ có khó thở tăng, đờm đổi màu không?",
+          "a": "Có, khó thở hơn, đờm vàng.",
+          "good": true
+        },
+        {
+          "q": "Có bệnh nền hô hấp không?",
+          "a": "Có, phổi mạn (COPD).",
+          "good": true
+        }
+      ],
+      "correct": "refer_copd",
+      "danger_if": [
+        "combo_cold_otc",
+        "antibiotic",
+        "rest_fluids"
+      ],
+      "card": {
+        "title": "Cảm trên nền bệnh phổi mạn",
+        "bullets": [
+          "Người cao tuổi có COPD, khó thở tăng, đờm đổi màu là nguy cơ đợt cấp/nhiễm trùng.",
+          "Không tự xử lý như cảm thường.",
+          "Chuyển bác sĩ để đánh giá và kê điều trị phù hợp."
+        ]
+      },
+      "actions": [
+        {
+          "id": "refer_copd",
+          "label": "Chuyển bác sĩ vì COPD + khó thở tăng + đờm đổi màu",
+          "emoji": "⚠️",
+          "color": "#f87171"
+        },
+        {
+          "id": "combo_cold_otc",
+          "label": "Thuốc cảm + thuốc ho thông thường",
+          "emoji": "💊",
+          "color": "#60a5fa"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Tự bán kháng sinh vì đờm vàng",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "rest_fluids",
+          "label": "Bù nước nghỉ ngơi tại nhà",
+          "emoji": "🛌",
+          "color": "#34d399"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Người cao tuổi có COPD, khó thở tăng và đờm đổi màu là dấu hiệu nguy cơ đợt cấp/nhiễm trùng cần bác sĩ đánh giá.",
+        "why_wrong": "Tự bán thuốc cảm hoặc kháng sinh có thể che lấp bệnh nặng và sai thẩm quyền.",
+        "counter_checklist": [
+          "Tuổi và bệnh nền hô hấp",
+          "Khó thở có tăng không",
+          "Đờm đổi màu/sốt không",
+          "Refer nếu COPD + khó thở tăng"
+        ],
+        "memory_tip": "Người già COPD khó thở tăng = ca nguy cơ cao."
+      }
+    },
+    {
+      "case_id": "COLD_NIGHT_COUGH_009",
+      "customer_type": "adult",
+      "opening_line": "Em cảm 2 ngày, đêm ho và nghẹt mũi khó ngủ, không sốt cao.",
+      "screening": [
+        {
+          "q": "Triệu chứng kéo dài bao lâu rồi?",
+          "a": "Mới 1 ngày.",
+          "good": true
+        },
+        {
+          "q": "Có sốt cao, khó thở, đau ngực không?",
+          "a": "Không, chỉ chảy mũi hắt hơi.",
+          "good": true
+        },
+        {
+          "q": "Bỏ qua hỏi, bán luôn kháng sinh.",
+          "a": "(Bỏ sàng lọc — rủi ro)",
+          "good": false
+        }
+      ],
+      "correct": "combo_cold_otc",
+      "danger_if": [
+        "antibiotic"
+      ],
+      "card": {
+        "title": "Cảm kèm ho/nghẹt mũi về đêm",
+        "bullets": [
+          "Combo cảm thường: hạ sốt/giảm đau nếu cần + vệ sinh mũi + kháng histamin khi hắt hơi/chảy mũi.",
+          "Không dùng kháng sinh cho cảm do virus.",
+          "Dặn uống nước, nghỉ ngơi, theo dõi sốt cao/khó thở/kéo dài."
+        ]
+      },
+      "actions": [
+        {
+          "id": "combo_cold_otc",
+          "label": "Paracetamol nếu sốt/đau + xịt/rửa mũi NaCl + kháng histamin nếu chảy mũi",
+          "emoji": "💊",
+          "color": "#60a5fa"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Kháng sinh 3 ngày cho nhanh khỏi",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "refer",
+          "label": "Chuyển bác sĩ ngay dù không dấu hiệu nặng",
+          "emoji": "⚠️",
+          "color": "#fbbf24"
+        },
+        {
+          "id": "no_medicine",
+          "label": "Không tư vấn gì, bảo tự khỏi",
+          "emoji": "🛌",
+          "color": "#34d399"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Khách có triệu chứng cảm nhẹ, mới 1 ngày, không sốt cao/khó thở nên xử lý tại quầy bằng combo giảm triệu chứng là hợp lý.",
+        "why_wrong": "Kháng sinh không có tác dụng với cảm virus; refer ngay khi không có dấu hiệu nặng làm giảm trải nghiệm khách.",
+        "counter_checklist": [
+          "Hỏi thời gian bệnh",
+          "Hỏi sốt cao/khó thở/đau ngực",
+          "Hỏi bệnh nền, thai kỳ, thuốc đang dùng",
+          "Dặn theo dõi nếu nặng lên"
+        ],
+        "memory_tip": "Cảm nhẹ = giảm triệu chứng + theo dõi, không kháng sinh."
+      }
+    },
+    {
+      "case_id": "COLD_SEASONAL_ALLERGY_010",
+      "customer_type": "adult",
+      "opening_line": "Cứ vào mùa lạnh tôi hắt hơi, ngứa mũi, nước mũi trong, không sốt.",
+      "screening": [
+        {
+          "q": "Có sốt hay đau người không?",
+          "a": "Không sốt, chỉ ngứa mũi.",
+          "good": true
+        },
+        {
+          "q": "Có theo mùa/buổi sáng/khi gặp bụi không?",
+          "a": "Đúng, sáng và khi quét nhà.",
+          "good": true
+        }
+      ],
+      "correct": "combo_allergic_rhinitis",
+      "danger_if": [
+        "antibiotic"
+      ],
+      "card": {
+        "title": "Dị ứng theo mùa dễ nhầm cảm",
+        "bullets": [
+          "Viêm mũi dị ứng: hắt hơi, ngứa mũi, nước mũi trong, theo mùa/bụi.",
+          "Combo hợp lý: kháng histamin + xịt/rửa mũi NaCl + tránh dị nguyên.",
+          "Không dùng kháng sinh; nếu kéo dài/nặng/tái phát nhiều thì khám chuyên khoa."
+        ]
+      },
+      "actions": [
+        {
+          "id": "combo_allergic_rhinitis",
+          "label": "Kháng histamin + xịt/rửa mũi NaCl + tránh bụi/dị nguyên",
+          "emoji": "🤧",
+          "color": "#60a5fa"
+        },
+        {
+          "id": "combo_cold_otc",
+          "label": "Thuốc cảm tổng hợp + hạ sốt",
+          "emoji": "💊",
+          "color": "#34d399"
+        },
+        {
+          "id": "antibiotic",
+          "label": "Kháng sinh vì chảy nước mũi lâu",
+          "emoji": "💉",
+          "color": "#f87171"
+        },
+        {
+          "id": "refer",
+          "label": "Chuyển khám ngay mọi trường hợp",
+          "emoji": "⚠️",
+          "color": "#fbbf24"
+        }
+      ],
+      "deep_explain": {
+        "why_correct": "Hắt hơi, ngứa mũi, nước mũi trong theo buổi sáng/bụi phù hợp viêm mũi dị ứng; combo đúng là kháng histamin + rửa/xịt NaCl + tránh dị nguyên.",
+        "why_wrong": "Thuốc cảm tổng hợp/hạ sốt không đúng trọng tâm nếu không sốt đau; kháng sinh là sai vì không có nhiễm khuẩn.",
+        "counter_checklist": [
+          "Hỏi có sốt/đau người không",
+          "Hỏi ngứa mũi/nước mũi trong",
+          "Hỏi yếu tố bụi/mùa/sáng sớm",
+          "Tư vấn tránh dị nguyên"
+        ],
+        "memory_tip": "Ngứa mũi + hắt hơi theo bụi/mùa = nghĩ dị ứng."
+      }
+    }
+  ],
+  "answer_mode": "case_specific_combo",
+  "mission": {
+    "title": "Ca trực Cảm cúm — 10 nhiệm vụ",
+    "total_questions": 10,
+    "milestones": [
+      {
+        "at": 3,
+        "badge": "🥉 Tân binh Cảm cúm",
+        "reward": "+50 điểm thưởng"
+      },
+      {
+        "at": 6,
+        "badge": "🥈 Tư vấn viên An toàn",
+        "reward": "+100 điểm thưởng"
+      },
+      {
+        "at": 10,
+        "badge": "🥇 Chuyên viên Cảm cúm",
+        "reward": "+200 điểm thưởng"
+      }
+    ]
+  }
+}
