@@ -21,6 +21,14 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:#222;font-
               cursor:pointer;display:flex;align-items:center;gap:6px;
               border-bottom:1px solid #f0f0f0;user-select:none}
 .section-hdr:hover{background:#f8f9fa}
+@media(max-width:767px){.tab-bar{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;scrollbar-width:none;-ms-overflow-style:none;margin-bottom:4px}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-bar .tab-btn{white-space:nowrap;flex-shrink:0;padding:6px 12px;font-size:.78em;border-radius:20px;background:#eef2f7;color:#1a3c5e;font-weight:600;border:none;cursor:pointer}
+.tab-bar .tab-btn.active{background:#1a3c5e;color:#fff}
+.section-hdr{display:none}
+.section-hdr.mobile-tab{display:flex;padding:10px 14px;font-size:.85em}
+.section{margin-bottom:6px}
+}
 .toggle-icon{margin-left:auto;font-size:.8em;color:#aaa}
 .section-body{padding:14px 16px}
 .dt{width:100%;border-collapse:collapse;font-size:.86em}
@@ -45,7 +53,7 @@ h4{font-size:.9em;color:#555;margin-bottom:6px}
 <body>
 <div class="header">
   <h1>🏪 SHOP0044</h1>
-  <div class="sub">Dữ liệu đến: 14/06/2026 (14/30 ngày) &nbsp;·&nbsp; Cập nhật lúc 09:40 ngày 17/06/2026</div>
+  <div class="sub">Dữ liệu đến: 14/06/2026 (14/30 ngày) &nbsp;·&nbsp; Cập nhật lúc 09:57 ngày 17/06/2026</div>
 </div>
 
 <div class="wrap">
@@ -211,17 +219,48 @@ function toggle(id){
   if(el.style.display==='none'){el.style.display='';if(ico)ico.textContent='▼';}
   else{el.style.display='none';if(ico)ico.textContent='▶';}
 }
+function switchTab(id){
+  // hide all section bodies, deactivate all tabs
+  var bodies=document.querySelectorAll('.section-body');
+  for(var i=0;i<bodies.length;i++){bodies[i].style.display='none';}
+  var btns=document.querySelectorAll('.tab-btn');
+  for(var i=0;i<btns.length;i++){btns[i].classList.remove('active');}
+  // show target
+  var el=document.getElementById(id);
+  if(el){el.style.display='';}
+  var btn=document.querySelector('.tab-btn[data-target="'+id+'"]');
+  if(btn){btn.classList.add('active');}
+  // scroll to top of content
+  window.scrollTo({top:document.querySelector('.tab-bar').offsetTop-10,behavior:'smooth'});
+}
 (function(){
   if(window.innerWidth<768){
-    var sections=document.querySelectorAll('.section-body');
+    // Build tab bar
+    var wrap=document.querySelector('.wrap');
+    if(!wrap)return;
+    var sections=wrap.querySelectorAll('.section');
+    if(sections.length<2)return;
+    var tabBar=document.createElement('div');
+    tabBar.className='tab-bar';
+    var firstId=null;
     for(var i=0;i<sections.length;i++){
-      var el=sections[i];
-      if(el.id && el.id!=='alerts-body'){
-        el.style.display='none';
-        var ico=el.previousElementSibling.querySelector('.toggle-icon');
-        if(ico)ico.textContent='▶';
-      }
+      var hdr=sections[i].querySelector('.section-hdr');
+      var body=sections[i].querySelector('.section-body');
+      if(!hdr||!body)continue;
+      var id=body.id;
+      if(!id)continue;
+      if(!firstId)firstId=id;
+      var label=hdr.textContent.replace('▼','').replace('▶','').trim();
+      var btn=document.createElement('button');
+      btn.className='tab-btn'+(i===0?' active':'');
+      btn.textContent=label;
+      btn.setAttribute('data-target',id);
+      btn.onclick=function(){switchTab(this.getAttribute('data-target'));};
+      tabBar.appendChild(btn);
+      // hide all bodies except first
+      body.style.display=(i===0?'':'none');
     }
+    wrap.insertBefore(tabBar,wrap.firstChild);
   }
 })();
 </script>
