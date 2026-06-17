@@ -48,6 +48,16 @@ h4{font-size:.9em;color:#555;margin-bottom:6px}
 .kpi8-sub{font-size:.82em;color:#555;margin-bottom:2px}
 .kpi8-cmps{margin-top:6px;font-size:.78em;display:flex;flex-direction:column;gap:2px;color:#777}
 .cmp{display:inline-block}
+
+@media(max-width:767px){{
+body{{background:#f4f6f9!important}}
+.tab-bar{{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;scrollbar-width:none;-ms-overflow-style:none;margin-bottom:0;background:#f4f6f9;position:sticky;top:56px;z-index:98}}
+.tab-bar::-webkit-scrollbar{{display:none}}
+.tab-bar .tab-btn{{white-space:nowrap;flex-shrink:0;padding:6px 12px;font-size:.75em;border-radius:20px;background:#eef2f7;color:#1a3c5e;font-weight:600;border:none;cursor:pointer;transition:all .15s}}
+.tab-bar .tab-btn.active{{background:#1a3c5e;color:#fff}}
+.section-hdr{{display:none!important}}
+.section{{margin-bottom:4px}}
+}}
 </style>
 </head>
 <body>
