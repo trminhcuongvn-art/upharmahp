@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phân tích T5/T6/T7 — 21 Nhà thuốc Upharma</title>
+<style>
+  :root{--g:#1a8a4a;--r:#cc2222;--y:#c27d00;--b:#1a4a8a;--dk:#2c3e50;--mt:#7f8c8d}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:#f0f2f5;color:#2c3e50;font-size:14px}
+  .page{max-width:1500px;margin:0 auto;padding:14px}
+  .rh{background:linear-gradient(135deg,#1a252f,#2c3e50 60%,#34495e);color:#fff;border-radius:12px;padding:18px 24px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  .rh h1{font-size:1.35em;font-weight:700} .rh .sub{color:#bdc3c7;font-size:.86em;margin-top:3px}
+  .badge{background:rgba(255,255,255,.15);padding:3px 10px;border-radius:14px;font-size:.8em;white-space:nowrap}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px;margin-bottom:14px}
+  .card{background:#fff;border-radius:9px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.09);border-left:4px solid #ddd}
+  .cv{font-size:1.3em;font-weight:800;line-height:1.1;margin:2px 0}
+  .cl{font-size:.72em;color:var(--mt);text-transform:uppercase;letter-spacing:.04em}
+  .cs{font-size:.75em;color:#999;margin-top:2px}
+  .section{background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:14px;overflow:hidden}
+  .section-head{padding:10px 16px;font-weight:700;font-size:.9em;border-bottom:1px solid #e9ecef}
+  .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:12px;padding:14px}
+  .shop-card{border:1px solid #e2e8f0;border-radius:10px;padding:14px;transition:box-shadow .2s}
+  .shop-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.1)}
+  .shop-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .shop-name{font-size:.95em} .shop-ds{font-size:1.2em;font-weight:800;color:#1a4a8a}
+  .mini-bars{margin:8px 0}
+  .bar-row{display:flex;align-items:center;gap:6px;margin:2px 0}
+  .bar-label{width:20px;font-size:.7em;color:#999;text-align:right}
+  .bar-track{flex:1;height:8px;background:#f1f5f9;border-radius:4px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:4px;transition:width .3s}
+  .bar-val{width:55px;font-size:.72em;text-align:right;font-weight:600}
+  .shop-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;font-size:.78em;margin:8px 0;padding:6px 0;border-top:1px solid #f1f5f9;border-bottom:1px solid #f1f5f9}
+  .shop-metrics div{display:flex;justify-content:space-between}
+  .m-label{color:#999}
+  .shop-analysis{font-size:.82em;color:#475569;line-height:1.5;margin:6px 0}
+  .shop-recommendation{font-size:.8em;color:#1a4a8a;background:#f0f7ff;padding:6px 8px;border-radius:6px;margin-top:6px}
+  @media print{@page{size:A3 landscape;margin:5mm}body{font-size:8px;background:#fff}.shop-grid{grid-template-columns:repeat(2,1fr)}.shop-card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="rh">
+  <div>
+    <h1>Phân tích T5 / T6 / T7 / 2026</h1>
+    <div class="sub">21 Nhà thuốc Upharma · Dữ liệu đến 31/07/2026</div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <span class="badge">T5 → T6: ↑2.1%</span>
+    <span class="badge">T6 → T7: ↓5.9%</span>
+    <span class="badge">DS T7: 4.29 Tỷ</span>
+  </div>
+</div>
+
+<!-- TONG QUAN -->
+<div style="font-size:.8em;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#7f8c8d;margin:0 2px 8px">Tổng quan chuỗi</div>
+<div class="cards">
+  <div class="card" style="border-left-color:#1a4a8a"><div class="cl">DS T5</div><div class="cv" style="color:#1a4a8a">4.46 Tỷ</div><div class="cs">14,801 KH · 50,878 đơn</div></div>
+  <div class="card" style="border-left-color:#60a5fa"><div class="cl">DS T6</div><div class="cv" style="color:#60a5fa">4.55 Tỷ</div><div class="cs">↑2.1% so T5</div></div>
+  <div class="card" style="border-left-color:#2563eb"><div class="cl">DS T7</div><div class="cv" style="color:#2563eb">4.29 Tỷ</div><div class="cs">↓5.9% so T6</div></div>
+  <div class="card" style="border-left-color:#1a8a4a"><div class="cl">KH T7</div><div class="cv" style="color:#1a8a4a">15,253</div><div class="cs">↑2.8% so T6</div></div>
+  <div class="card" style="border-left-color:#6b3d1a"><div class="cl">ĐƠN T7</div><div class="cv" style="color:#6b3d1a">54,056</div><div class="cs">↑4.7% so T6</div></div>
+  <div class="card" style="border-left-color:#1a8a4a"><div class="cl">SHOP TĂNG T7</div><div class="cv" style="color:#1a8a4a">6</div><div class="cs">SHOP0032, SHOP0068, SHOP0142, SHOP005A, SHOP0143</div></div>
+  <div class="card" style="border-left-color:#cc2222"><div class="cl">SHOP GIẢM T7</div><div class="cv" style="color:#cc2222">11</div><div class="cs">SHOP0076, SHOP0092, SHOP0104, SHOP0139, SHOP0094</div></div>
+</div>
+
+<!-- CHI TIET TUNG SHOP -->
+<div class="section">
+  <div class="section-head">Phân tích từng nhà thuốc — DS T5/T6/T7 + Nhận xét + Đề xuất T8</div>
+  <div class="shop-grid">
+    <div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0044</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">682.2M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:96%;background:#94a3b8"></div></div><span class="bar-val">656.1M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:98%;background:#60a5fa"></div></div><span class="bar-val">672.5M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#2563eb"></div></div><span class="bar-val">682.2M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑1.4%</span></div>
+    <div><span class="m-label">KH T7</span><span>1,558</span></div>
+    <div><span class="m-label">Đơn T7</span><span>5,890</span></div>
+    <div><span class="m-label">TB đơn</span><span>116K</span></div>
+    <div><span class="m-label">NV</span><span>4</span></div>
+  </div>
+  <div class="shop-analysis">DS ổn định (+1.4% so T6). KH tăng 10% — mở rộng được tệp KH. Hiệu suất NV: 170.6M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Ổn định, tìm cơ hội tăng trưởng</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0062</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">574.8M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:96%;background:#94a3b8"></div></div><span class="bar-val">552.6M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:98%;background:#60a5fa"></div></div><span class="bar-val">564.2M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#2563eb"></div></div><span class="bar-val">574.8M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑1.9%</span></div>
+    <div><span class="m-label">KH T7</span><span>1,591</span></div>
+    <div><span class="m-label">Đơn T7</span><span>6,104</span></div>
+    <div><span class="m-label">TB đơn</span><span>94K</span></div>
+    <div><span class="m-label">NV</span><span>4</span></div>
+  </div>
+  <div class="shop-analysis">DS ổn định (+1.9% so T6). Đơn hàng tăng 11% nhưng TB đơn giảm -8% — bán nhiều đơn nhỏ. Hiệu suất NV: 143.7M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Ổn định, tìm cơ hội tăng trưởng</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0061</b> <span style="color:#6b3d1a">· Luận</span></div>
+    <div class="shop-ds">481.5M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:#94a3b8"></div></div><span class="bar-val">453.0M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:96%;background:#60a5fa"></div></div><span class="bar-val">466.8M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#2563eb"></div></div><span class="bar-val">481.5M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑3.1%</span></div>
+    <div><span class="m-label">KH T7</span><span>1,331</span></div>
+    <div><span class="m-label">Đơn T7</span><span>5,012</span></div>
+    <div><span class="m-label">TB đơn</span><span>96K</span></div>
+    <div><span class="m-label">NV</span><span>5</span></div>
+  </div>
+  <div class="shop-analysis">DS ổn định (+3.1% so T6). Hiệu suất NV: 96.3M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Ổn định, tìm cơ hội tăng trưởng</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0032</b> <span style="color:#1a6b4a">· Linh</span></div>
+    <div class="shop-ds">323.5M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:97%;background:#94a3b8"></div></div><span class="bar-val">315.0M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:92%;background:#60a5fa"></div></div><span class="bar-val">300.2M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#2563eb"></div></div><span class="bar-val">323.5M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑7.8%</span></div>
+    <div><span class="m-label">KH T7</span><span>1,205</span></div>
+    <div><span class="m-label">Đơn T7</span><span>4,986</span></div>
+    <div><span class="m-label">TB đơn</span><span>65K</span></div>
+    <div><span class="m-label">NV</span><span>3</span></div>
+  </div>
+  <div class="shop-analysis">DS tăng +7.8% so T6. KH tăng 34% — mở rộng được tệp KH. Đơn hàng tăng 15% nhưng TB đơn giảm -6% — bán nhiều đơn nhỏ. Hiệu suất NV: 107.8M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Duy trì đà tăng, đẩy CTKM T8</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0068</b> <span style="color:#1a6b4a">· Linh</span></div>
+    <div class="shop-ds">224.3M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:86%;background:#94a3b8"></div></div><span class="bar-val">193.4M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:76%;background:#60a5fa"></div></div><span class="bar-val">171.6M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#2563eb"></div></div><span class="bar-val">224.3M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑30.7%</span></div>
+    <div><span class="m-label">KH T7</span><span>860</span></div>
+    <div><span class="m-label">Đơn T7</span><span>3,780</span></div>
+    <div><span class="m-label">TB đơn</span><span>59K</span></div>
+    <div><span class="m-label">NV</span><span>2</span></div>
+  </div>
+  <div class="shop-analysis"><b>DS tăng trưởng mạnh +30.7%</b> so T6. KH tăng 15% — mở rộng được tệp KH. Đơn hàng tăng 17% + TB đơn tăng 11% = tăng trưởng kép. Hiệu suất NV: 112.2M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Duy trì đà tăng, đẩy CTKM T8</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0076</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">196.1M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:#94a3b8"></div></div><span class="bar-val">263.6M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#60a5fa"></div></div><span class="bar-val">279.5M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:#2563eb"></div></div><span class="bar-val">196.1M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓29.8%</span></div>
+    <div><span class="m-label">KH T7</span><span>678</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,838</span></div>
+    <div><span class="m-label">TB đơn</span><span>107K</span></div>
+    <div><span class="m-label">NV</span><span>3</span></div>
+  </div>
+  <div class="shop-analysis"><b style='color:#cc2222'>DS giảm mạnh -29.8%</b> so T6. Đơn hàng giảm -13% và TB đơn giảm -19% — cần hành động ngay. Hiệu suất NV: 65.4M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Upsell, combo SP để tăng TB đơn; Phân tích nguyên nhân giảm, họp team tìm giải pháp</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0092</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">174.5M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:92%;background:#94a3b8"></div></div><span class="bar-val">179.2M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#60a5fa"></div></div><span class="bar-val">194.0M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:89%;background:#2563eb"></div></div><span class="bar-val">174.5M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓10.1%</span></div>
+    <div><span class="m-label">KH T7</span><span>648</span></div>
+    <div><span class="m-label">Đơn T7</span><span>2,052</span></div>
+    <div><span class="m-label">TB đơn</span><span>85K</span></div>
+    <div><span class="m-label">NV</span><span>4</span></div>
+  </div>
+  <div class="shop-analysis">DS giảm nhẹ -10.1% so T6. Hiệu suất NV: 43.6M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Ổn định, tìm cơ hội tăng trưởng</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0104</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">167.8M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:83%;background:#94a3b8"></div></div><span class="bar-val">171.6M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#60a5fa"></div></div><span class="bar-val">205.1M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:81%;background:#2563eb"></div></div><span class="bar-val">167.8M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓18.2%</span></div>
+    <div><span class="m-label">KH T7</span><span>476</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,987</span></div>
+    <div><span class="m-label">TB đơn</span><span>84K</span></div>
+    <div><span class="m-label">NV</span><span>4</span></div>
+  </div>
+  <div class="shop-analysis"><b style='color:#cc2222'>DS giảm mạnh -18.2%</b> so T6. Đơn hàng tăng 14% nhưng TB đơn giảm -28% — bán nhiều đơn nhỏ. Hiệu suất NV: 41.9M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Upsell, combo SP để tăng TB đơn; Phân tích nguyên nhân giảm, họp team tìm giải pháp</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0142</b> <span style="color:#6b3d1a">· Luận</span></div>
+    <div class="shop-ds">161.6M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:7%;background:#94a3b8"></div></div><span class="bar-val">12.8M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#60a5fa"></div></div><span class="bar-val">130.7M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#2563eb"></div></div><span class="bar-val">161.6M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑23.7%</span></div>
+    <div><span class="m-label">KH T7</span><span>644</span></div>
+    <div><span class="m-label">Đơn T7</span><span>2,603</span></div>
+    <div><span class="m-label">TB đơn</span><span>62K</span></div>
+    <div><span class="m-label">NV</span><span>4</span></div>
+  </div>
+  <div class="shop-analysis"><b>DS tăng trưởng mạnh +23.7%</b> so T6. KH tăng 12% — mở rộng được tệp KH. Hiệu suất NV: 40.4M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Duy trì đà tăng, đẩy CTKM T8</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP005A</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">159.7M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#94a3b8"></div></div><span class="bar-val">166.3M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:44%;background:#60a5fa"></div></div><span class="bar-val">73.2M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:96%;background:#2563eb"></div></div><span class="bar-val">159.7M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑118.0%</span></div>
+    <div><span class="m-label">KH T7</span><span>619</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,870</span></div>
+    <div><span class="m-label">TB đơn</span><span>85K</span></div>
+    <div><span class="m-label">NV</span><span>3</span></div>
+  </div>
+  <div class="shop-analysis"><b>DS tăng trưởng mạnh +118.0%</b> so T6. KH tăng 18% — mở rộng được tệp KH. Đơn hàng tăng 48% + TB đơn tăng 47% = tăng trưởng kép. Hiệu suất NV: 53.2M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Duy trì đà tăng, đẩy CTKM T8</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0139</b> <span style="color:#1a6b4a">· Linh</span></div>
+    <div class="shop-ds">148.0M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:93%;background:#94a3b8"></div></div><span class="bar-val">153.2M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#60a5fa"></div></div><span class="bar-val">163.8M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#2563eb"></div></div><span class="bar-val">148.0M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓9.6%</span></div>
+    <div><span class="m-label">KH T7</span><span>694</span></div>
+    <div><span class="m-label">Đơn T7</span><span>2,596</span></div>
+    <div><span class="m-label">TB đơn</span><span>57K</span></div>
+    <div><span class="m-label">NV</span><span>2</span></div>
+  </div>
+  <div class="shop-analysis">DS giảm nhẹ -9.6% so T6. Đơn hàng tăng 13% nhưng TB đơn giảm -20% — bán nhiều đơn nhỏ. Hiệu suất NV: 74.0M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Upsell, combo SP để tăng TB đơn</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0094</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">146.1M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:99%;background:#94a3b8"></div></div><span class="bar-val">195.4M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#60a5fa"></div></div><span class="bar-val">196.2M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:74%;background:#2563eb"></div></div><span class="bar-val">146.1M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓25.6%</span></div>
+    <div><span class="m-label">KH T7</span><span>926</span></div>
+    <div><span class="m-label">Đơn T7</span><span>2,352</span></div>
+    <div><span class="m-label">TB đơn</span><span>62K</span></div>
+    <div><span class="m-label">NV</span><span>4</span></div>
+  </div>
+  <div class="shop-analysis"><b style='color:#cc2222'>DS giảm mạnh -25.6%</b> so T6. KH tăng 13% — mở rộng được tệp KH. Hiệu suất NV: 36.5M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Upsell, combo SP để tăng TB đơn; Phân tích nguyên nhân giảm, họp team tìm giải pháp</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0143</b> <span style="color:#6b3d1a">· Luận</span></div>
+    <div class="shop-ds">141.1M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:26%;background:#94a3b8"></div></div><span class="bar-val">36.8M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:81%;background:#60a5fa"></div></div><span class="bar-val">114.4M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#2563eb"></div></div><span class="bar-val">141.1M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑23.3%</span></div>
+    <div><span class="m-label">KH T7</span><span>471</span></div>
+    <div><span class="m-label">Đơn T7</span><span>2,091</span></div>
+    <div><span class="m-label">TB đơn</span><span>67K</span></div>
+    <div><span class="m-label">NV</span><span>4</span></div>
+  </div>
+  <div class="shop-analysis"><b>DS tăng trưởng mạnh +23.3%</b> so T6. Hiệu suất NV: 35.3M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Duy trì đà tăng, đẩy CTKM T8</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP004A</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">123.3M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#94a3b8"></div></div><span class="bar-val">175.0M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:77%;background:#60a5fa"></div></div><span class="bar-val">135.8M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:#2563eb"></div></div><span class="bar-val">123.3M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓9.2%</span></div>
+    <div><span class="m-label">KH T7</span><span>489</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,956</span></div>
+    <div><span class="m-label">TB đơn</span><span>63K</span></div>
+    <div><span class="m-label">NV</span><span>3</span></div>
+  </div>
+  <div class="shop-analysis">DS giảm nhẹ -9.2% so T6. Hiệu suất NV: 41.1M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Upsell, combo SP để tăng TB đơn</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0115</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">108.4M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:83%;background:#94a3b8"></div></div><span class="bar-val">90.5M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:82%;background:#60a5fa"></div></div><span class="bar-val">89.6M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#2563eb"></div></div><span class="bar-val">108.4M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑21.0%</span></div>
+    <div><span class="m-label">KH T7</span><span>743</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,871</span></div>
+    <div><span class="m-label">TB đơn</span><span>58K</span></div>
+    <div><span class="m-label">NV</span><span>3</span></div>
+  </div>
+  <div class="shop-analysis"><b>DS tăng trưởng mạnh +21.0%</b> so T6. Đơn hàng tăng 12% + TB đơn tăng 8% = tăng trưởng kép. Hiệu suất NV: 36.1M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Duy trì đà tăng, đẩy CTKM T8</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0130</b> <span style="color:#1a6b4a">· Linh</span></div>
+    <div class="shop-ds">100.0M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#94a3b8"></div></div><span class="bar-val">137.0M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:79%;background:#60a5fa"></div></div><span class="bar-val">108.3M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:72%;background:#2563eb"></div></div><span class="bar-val">100.0M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓7.7%</span></div>
+    <div><span class="m-label">KH T7</span><span>425</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,173</span></div>
+    <div><span class="m-label">TB đơn</span><span>85K</span></div>
+    <div><span class="m-label">NV</span><span>4</span></div>
+  </div>
+  <div class="shop-analysis">DS giảm nhẹ -7.7% so T6. KH tăng 18% — mở rộng được tệp KH. Hiệu suất NV: 25.0M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Ổn định, tìm cơ hội tăng trưởng</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0088</b> <span style="color:#1a6b4a">· Linh</span></div>
+    <div class="shop-ds">88.6M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:95%;background:#94a3b8"></div></div><span class="bar-val">167.9M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#60a5fa"></div></div><span class="bar-val">175.5M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#2563eb"></div></div><span class="bar-val">88.6M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓49.5%</span></div>
+    <div><span class="m-label">KH T7</span><span>359</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,222</span></div>
+    <div><span class="m-label">TB đơn</span><span>73K</span></div>
+    <div><span class="m-label">NV</span><span>3</span></div>
+  </div>
+  <div class="shop-analysis"><b style='color:#cc2222'>DS giảm mạnh -49.5%</b> so T6. KH giảm 44% — mất KH, cần kiểm tra lại quy trình CSKH. Đơn hàng giảm -36% và TB đơn giảm -21% — cần hành động ngay. Hiệu suất NV: 29.5M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Tăng cường CSKH, gọi điện KH cũ; Upsell, combo SP để tăng TB đơn; Phân tích nguyên nhân giảm, họp team tìm giải pháp</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0118</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">87.5M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#94a3b8"></div></div><span class="bar-val">121.6M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:99%;background:#60a5fa"></div></div><span class="bar-val">121.1M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:71%;background:#2563eb"></div></div><span class="bar-val">87.5M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓27.8%</span></div>
+    <div><span class="m-label">KH T7</span><span>510</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,192</span></div>
+    <div><span class="m-label">TB đơn</span><span>73K</span></div>
+    <div><span class="m-label">NV</span><span>3</span></div>
+  </div>
+  <div class="shop-analysis"><b style='color:#cc2222'>DS giảm mạnh -27.8%</b> so T6. Đơn hàng giảm -10% và TB đơn giảm -19% — cần hành động ngay. Hiệu suất NV: 29.2M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Upsell, combo SP để tăng TB đơn; Phân tích nguyên nhân giảm, họp team tìm giải pháp</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0065</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">86.6M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#94a3b8"></div></div><span class="bar-val">171.8M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:49%;background:#60a5fa"></div></div><span class="bar-val">84.6M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#2563eb"></div></div><span class="bar-val">86.6M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#1a8a4a;font-weight:700">↑2.4%</span></div>
+    <div><span class="m-label">KH T7</span><span>499</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,661</span></div>
+    <div><span class="m-label">TB đơn</span><span>52K</span></div>
+    <div><span class="m-label">NV</span><span>2</span></div>
+  </div>
+  <div class="shop-analysis">DS ổn định (+2.4% so T6). KH tăng 14% — mở rộng được tệp KH. Đơn hàng tăng 23% nhưng TB đơn giảm -17% — bán nhiều đơn nhỏ. Hiệu suất NV: 43.3M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Upsell, combo SP để tăng TB đơn</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0105</b> <span style="color:#1a3d6b">· Cường</span></div>
+    <div class="shop-ds">59.7M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#94a3b8"></div></div><span class="bar-val">90.8M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:82%;background:#60a5fa"></div></div><span class="bar-val">74.9M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:65%;background:#2563eb"></div></div><span class="bar-val">59.7M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓20.3%</span></div>
+    <div><span class="m-label">KH T7</span><span>288</span></div>
+    <div><span class="m-label">Đơn T7</span><span>1,197</span></div>
+    <div><span class="m-label">TB đơn</span><span>50K</span></div>
+    <div><span class="m-label">NV</span><span>3</span></div>
+  </div>
+  <div class="shop-analysis"><b style='color:#cc2222'>DS giảm mạnh -20.3%</b> so T6. KH giảm 13% — mất KH, cần kiểm tra lại quy trình CSKH. Hiệu suất NV: 19.9M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Tăng cường CSKH, gọi điện KH cũ; Upsell, combo SP để tăng TB đơn; Phân tích nguyên nhân giảm, họp team tìm giải pháp</div>
+</div><div class="shop-card">
+  <div class="shop-header">
+    <div class="shop-name"><b>SHOP0069</b> <span style="color:#1a6b4a">· Linh</span></div>
+    <div class="shop-ds">51.0M</div>
+  </div>
+  <div class="mini-bars">
+    <div class="bar-row"><span class="bar-label">T5</span><div class="bar-track"><div class="bar-fill" style="width:67%;background:#94a3b8"></div></div><span class="bar-val">156.8M</span></div>
+    <div class="bar-row"><span class="bar-label">T6</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#60a5fa"></div></div><span class="bar-val">231.6M</span></div>
+    <div class="bar-row"><span class="bar-label">T7</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#2563eb"></div></div><span class="bar-val">51.0M</span></div>
+  </div>
+  <div class="shop-metrics">
+    <div><span class="m-label">Target T7</span><span style="color:#999;font-weight:700">N/A</span></div>
+    <div><span class="m-label">Growth T6→T7</span><span style="color:#cc2222;font-weight:700">↓78.0%</span></div>
+    <div><span class="m-label">KH T7</span><span>239</span></div>
+    <div><span class="m-label">Đơn T7</span><span>623</span></div>
+    <div><span class="m-label">TB đơn</span><span>82K</span></div>
+    <div><span class="m-label">NV</span><span>3</span></div>
+  </div>
+  <div class="shop-analysis"><b style='color:#cc2222'>DS giảm mạnh -78.0%</b> so T6. KH giảm 61% — mất KH, cần kiểm tra lại quy trình CSKH. Đơn hàng giảm -69% và TB đơn giảm -30% — cần hành động ngay. Hiệu suất NV: 17.0M/NV (T7).</div>
+  <div class="shop-recommendation"><b>Đề xuất T8:</b> Tăng cường CSKH, gọi điện KH cũ; Upsell, combo SP để tăng TB đơn; Phân tích nguyên nhân giảm, họp team tìm giải pháp</div>
+</div>
+  </div>
+</div>
+
+<div style="text-align:center;padding:10px;color:#aaa;font-size:.75em">
+  Cập nhật: 04/08/2026 08:53 · Dữ liệu: data.db (T5-T7/2026) · Target: danh sach va target nha thuoc.xlsx
+</div>
+
+</div></body></html>
